@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Heading</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+
+    <nav class="navbar navbar-fixed-top bg-info">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--todo wtf-->
+                <a href="widget-list.html"><span class="navbar-text navbar-left glyphicon glyphicon-chevron-left"></span></a>
+                <a href="widget-list.html"><span class="navbar-text navbar-right glyphicon glyphicon-ok"></span></a>
+                <a class="navbar-brand" href="#">Widget Edit</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
         <label for="name">Name</label>
@@ -21,13 +32,26 @@
                value="US Senate Reaches Compromise"/>
 
         <label for="size">Size</label>
-        <input type="number"
-               id="size"
-               class="form-control"/>
+        <select class="form-control"
+                id="size">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
 
         <a href="widget-list.html"
            class="btn btn-block btn-danger">Delete</a>
     </div>
+
+    <nav class="navbar bg-info navbar-fixed-bottom">
+        <div class="container">
+            <a href="../user/profile.html"> <span class="navbar-text navbar-right glyphicon glyphicon-user"></span> </a>
+        </div>
+    </nav>
+
 
 </body>
 </html>

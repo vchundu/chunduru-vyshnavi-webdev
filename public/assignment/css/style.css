@@ -1,8 +1,6 @@
-input.form-control {
-    margin-bottom: 5px;
-}
-
-textarea.form-control {
+input.form-control,
+textarea.form-control,
+select.form-control{
     margin-bottom: 5px;
 }
 
@@ -13,5 +11,21 @@ a.btn-block {
 body {
     padding-top: 80px;
     padding-bottom: 80px;
+}
+
+.vc-widget {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.vc-widget-toolbar {
+    background-color: #ffffff;
+    opacity: 0.7;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    right:0px;
+    top: 0px;
+    width: 40px;
+    padding-left: 5px;
 }
 

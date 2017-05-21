@@ -2,11 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit YouTube Widget</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+    <nav class="navbar navbar-fixed-top bg-info">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--todo wtf-->
+                <a href="widget-list.html"><span class="navbar-text navbar-left glyphicon glyphicon-chevron-left"></span></a>
+                <a href="widget-list.html"><span class="navbar-text navbar-right glyphicon glyphicon-ok"></span></a>
+                <a class="navbar-brand" href="#">Widget Edit</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <label for="name">Name</label>
         <input type="text"
@@ -25,7 +35,7 @@
                value="https://youtu.be/uLWLashCXHE"/>
 
         <label for="width">Width</label>
-        <input type="text"
+        <input type="number"
                id="width"
                class="form-control"/>
         <!--TODO figure out what type width should be-->
@@ -33,5 +43,10 @@
         <a href="widget-list.html"
            class="btn btn-block btn-danger">Delete</a>
     </div>
+    <nav class="navbar bg-info navbar-fixed-bottom">
+        <div class="container">
+            <a href="../user/profile.html"> <span class="navbar-text navbar-right glyphicon glyphicon-user"></span> </a>
+        </div>
+    </nav>
 </body>
 </html>
