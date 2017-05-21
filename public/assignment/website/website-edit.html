@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top bg-info">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--todo wtf-->
+                <a href="website-list.html"><span class="navbar-text navbar-left glyphicon glyphicon-chevron-left"></span></a>
+                <a href="website-list.html"><span class="navbar-text navbar-right glyphicon glyphicon-ok"></span></a>
+                <a class="navbar-brand" href="#">Edit Website</a>
+            </div>
+        </div>
+    </nav>
+    <!--todo basically the same thing as new website but here with the two cols and landscape and scrolly thing-->
+    <div class="container">
+        <label for="name">Website Name</label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               value="Blogger"/>
+        <label for="description">Website Description</label>
+        <textarea name="description"
+                  id="description"
+                  cols="30"
+                  rows="3"
+                  class="form-control">I really want to be a blogger when I grow up.</textarea>
+        <a href="website-list.html"
+           class="btn btn-block btn-danger">Delete</a>
+
+    </div>
+    <nav class="navbar bg-info navbar-fixed-bottom">
+        <div class="container">
+            <a href="../user/profile.html"> <span class="navbar-text navbar-right glyphicon glyphicon-user"></span> </a>
+        </div>
+    </nav>
+</body>
+</html>
