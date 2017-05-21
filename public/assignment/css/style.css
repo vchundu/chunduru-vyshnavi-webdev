@@ -29,7 +29,24 @@ body {
     padding-left: 5px;
 }
 
-.vc-right {
-    float: right;
+.vc-no-border .list-group-item {
+    border: none;
+
 }
+
+@media (min-width: 768px) {
+    .col-sm-8 {
+        margin-left: 34%;
+    }
+}
+.vc-scrollable-left {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    overflow-y: scroll;
+    margin-bottom: 60px;
+    padding: 0px;
+}
+
+
 
