@@ -9,34 +9,63 @@
 <body>
     <nav class="navbar navbar-fixed-top bg-info">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <!--todo wtf-->
-                <a href="../website/website-list.html"><span class="navbar-text navbar-left glyphicon glyphicon-chevron-left"></span></a>
-                <a href="page-list.html"><span class="navbar-text navbar-right glyphicon glyphicon-ok"></span></a>
-                <a class="navbar-brand" href="#">Edit Page</a>
-            </div>
+            <a href="page-list.html"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+            <a href="page-list.html"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+            <a class="navbar-brand" href="#">New Page</a>
         </div>
     </nav>
     <div class="container-fluid">
-        <label for="name">Name</label>
-        <input type="text"
-               id="name"
-               class="form-control"
-               placeholder="Page Name"
-               value="Blog Post"/>
+        <div class="col-sm-4 hidden-xs vc-scrollable-left">
+            <ul class="list-group vc-no-border">
 
-        <label for="title">Page Title</label>
-        <input type="text"
-               id="title"
-               class="form-control"
-               placeholder="Page Title"/>
+                <li class="list-group-item">
+                    <a href="../widget/widget-list.html">Blog Post </a>
+                    <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </li>
 
-        <a href="page-list.html"
-           class="btn btn-block btn-danger">Delete</a>
+                <li class="list-group-item">
+                    <a href="../widget/widget-list.html">Blogs </a>
+                    <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="../widget/widget-list.html">Home </a>
+                    <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="../widget/widget-list.html">About </a>
+                    <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="../widget/widget-list.html">Contact Us </a>
+                    <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <label for="name">Name</label>
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   placeholder="Page Name"
+                   value="Blog Post"/>
+
+            <label for="title">Page Title</label>
+            <input type="text"
+                   id="title"
+                   class="form-control"
+                   placeholder="Page Title"/>
+
+            <a href="page-list.html"
+               class="btn btn-block btn-danger">Delete</a>
+        </div>
     </div>
     <nav class="navbar bg-info navbar-fixed-bottom">
         <div class="container-fluid">
-            <a href="../user/profile.html"> <span class="navbar-text navbar-right glyphicon glyphicon-user"></span> </a>
+            <a href="../user/profile.html"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
         </div>
     </nav>
 </body>
