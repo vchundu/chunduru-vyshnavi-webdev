@@ -1,0 +1,103 @@
+    <nav class="navbar navbar-fixed-top bg-info">
+        <div class="container-fluid">
+            <a href="../page/page-list.html"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+            <a href="widget-chooser.html"><span class="navbar-text pull-right glyphicon glyphicon-plus"></span></a>
+            <a class="navbar-brand" href="#">Widget Edit</a>
+        </div>
+    </nav>
+
+
+    <div ng-include="model.getWidgetUrlByType(widget.widgetType)"></div>
+    <!--<div ng-repeat="widget in model.widgets"-->
+         <!--class="container-fluid">-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<div ng-switch="widget.widgetType">-->
+                <!--<div ng-switch-when="HEADING">-->
+                    <!--<div ng-include="'views/widget/templates/widget-templates/widget-heading.view.client.html'"></div>-->
+                <!--</div>-->
+                <!--<div ng-switch-when="IMAGE">-->
+                    <!--<div ng-include="'views/widget/templates/widget-templates/widget-image.view.client.html"></div>-->
+                <!--</div>-->
+                <!--<div ng-switch-when="YOUTUBE">-->
+
+                <!--</div>-->
+                <!--<div ng-switch-when="HTML"-->
+                     <!--ng-bind-html="model.trust(widget.text)">-->
+                    <!--{{widget.text}}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="container-fluid">-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<h1>BuzzFeed Worth It</h1>-->
+        <!--</div>-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<h3>Steven, Andrew, and Adam eat food at three different price points in order to figure out which is most worth it</h3>-->
+        <!--</div>-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-image.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<img src="../image/worthit.jpg"-->
+                 <!--alt="Steven and Andrew eating expensive ice cream"-->
+                 <!--width="100%">-->
+        <!--</div>-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="#"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<p><b>Tasty</b> is a <a href="/wiki/BuzzFeed" title="BuzzFeed">BuzzFeed</a> division that produces-->
+                <!--and shares content related to comfort food. Tasty is mostly known for recipe video series posted-->
+                <!--on its <a href="/wiki/Facebook" title="Facebook">Facebook</a> page. The page is self-described-->
+                <!--as “Food that'll make you close your eyes, lean back, and whisper "yessss." Snack-sized videos-->
+                <!--and recipes you'll want to try.”<sup id="cite_ref-Tasty_FB_1-0" class="reference">-->
+                    <!--<a href="#cite_note-Tasty_FB-1">[1]</a></sup>-->
+                <!--Tasty Facebook page was launched on July 31, 2015, and has over 77 million followers as of December-->
+                <!--2016.<sup id="cite_ref-Tasty_FB_1-1" class="reference"><a href="#cite_note-Tasty_FB-1">[1]</a></sup>-->
+                <!--According to BuzzFeed, every fourth Facebook user watches Tasty recipe approximately once a month. Tasty-->
+                <!--recipes have received over 1.5 billion views on Facebook in October 2016, making the page 4th most-->
+                <!--watched Facebook publisher and #1 channel in a <a href="/wiki/Culinary_art" title="Culinary art">culinary-->
+                    <!--genre</a>.<sup id="cite_ref-Tubular_2-0" class="reference"><a href="#cite_note-Tubular-2">[2]</a></sup>-->
+                <!--The department is responsible for “37 percent of BuzzFeed`s video views”.-->
+                <!--<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup> The popularity is explained-->
+                <!--by the content being specifically optimized according to features of social media.</p>-->
+        <!--</div>-->
+        <!--<div class="vc-widget">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<h3>$1 Ice Cream Vs. $1,000 Ice Cream</h3>-->
+        <!--</div>-->
+        <!--<div class="vc-widget-toolbar pull-right">-->
+            <!--<a href="widget-youtube.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+            <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+        <!--</div>-->
+        <!--<div class="vc-widget responsive-video">-->
+            <!--<div class="vc-widget-toolbar pull-right">-->
+                <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+            <!--</div>-->
+            <!--<iframe width="100%"-->
+                    <!--src="https://www.youtube.com/embed/rNuIOpfA2HA"-->
+                    <!--frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div ng-include="'views/common/footer.view.client.html'"></div>

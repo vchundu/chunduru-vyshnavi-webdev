@@ -16,9 +16,9 @@
                     <span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a href="website-new.html">
+                <!--<a href="#!/user/{{model.userId}}/website/new">-->
                     <span class="navbar-text pull-right glyphicon glyphicon-plus"></span>
-                </a>
+                <!--</a>-->
 
                 <a class="navbar-brand" href="#">Websites</a>
 
@@ -29,7 +29,7 @@
 
         <ul class="list-group vc-no-border">
 
-            <li class="list-group-item">
+            <li class="list-group-item" ng-repeat="website in model.website">
                 <a href="../page/page-list.html">Address Book App </a>
                 <a href="website-edit.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
@@ -52,7 +52,7 @@
 
             <li class="list-group-item">
                 <a href="../page/page-list.html">Script Testing App </a>
-                <a href="website-edit.html">
+                <a href="!#/user/{{model.userId}}/website/{{website._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
