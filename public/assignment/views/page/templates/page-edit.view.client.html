@@ -1,27 +1,26 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
         <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
-        <a ng-click="model.updatePage(  )"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
-        <a class="navbar-brand" href="#">New Page</a>
+        <a ng-click="model.updatePage()"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand" href="#">Edit Page</a>
     </div>
 </nav>
 <div class="container-fluid">
     <div class="col-sm-4 hidden-xs vc-scrollable-left">
-        <div ng-include="'views/website/templates/website-templates/website-list-temp.view.client.html'"></div>
+        <div ng-include="'views/page/templates/page-templates/page-list-temp.view.client.html'"></div>
     </div>
     <div class="col-sm-8 col-xs-12">
         <label for="name">Name</label>
         <input type="text"
                id="name"
                class="form-control"
-               placeholder="Page Name"
-               value="Blog Post"/>
+               ng-model="model.page.name"/>
 
         <label for="title">Page Title</label>
         <input type="text"
                id="title"
-               class="form-control"
-               placeholder="Page Title"/>
+               ng-model="model.page.description"
+               class="form-control"/>
 
         <a ng-click="model.deletePage()"
            class="btn btn-block btn-danger">Delete</a>

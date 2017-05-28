@@ -23,7 +23,6 @@
         return api;
 
         function findAllPagesFromWebsite(websiteId) {
-            console.log(websiteId);
             return pages.filter(function(page) {
                 return page["websiteId"] === websiteId;
             });
@@ -39,8 +38,37 @@
             } else {
                 return page;
             }
+        }
 
+        function createPage(page, websiteId) {
+            page._id = new Date().getTime();
+            page.websiteId = websiteId;
+            pages.push(page);
+        }
 
+        function deletePage(pageId) {
+            var page = pages.find(function(page) {
+                return page['_id'] === pageId;
+            });
+            if (typeof page === "undefined") {
+                // do nothing
+            } else {
+                var index = pages.indexOf(page);
+                pages.splice(index,1);
+            }
+        }
+
+        function updatePage(pageId, newPage) {
+            var oldPage = pages.find(function(page) {
+                return pageId === page['_id'];
+            });
+
+            if (typeof oldPage === "undefined") {
+                // do nothing
+            } else {
+                var index = pages.indexOf(oldPage);
+                pages.splice(index, 1, newPage);
+            }
         }
 
     }

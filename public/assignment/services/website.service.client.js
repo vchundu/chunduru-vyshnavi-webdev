@@ -3,7 +3,7 @@
         .module('WAM')
         .factory('websiteService', websiteService);
 
-    function websiteService($location) {
+    function websiteService() {
 
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -43,19 +43,29 @@
             }
         }
 
-        function deleteWebsite(websiteId, userId) {
-            var website = findWebsiteByIdAndUser(websiteId, userId);
+        function deleteWebsite(websiteId) {
+            var oldWebsite = websites.find(function(website) {
+                return website['_id'] === websiteId;
+            });
 
-            if (website !== null) {
-                var index = websites.indexOf(website);
+            if (typeof oldWebsite === "undefined") {
+                // do nothing
+            } else {
+                var index = websites.indexOf(oldWebsite);
                 websites.splice(index, 1);
-                $location.url('/user/'+userId+'/website');
             }
         }
 
-        function updateWebsite(websiteId, userId) {
-            $location.url('/user/'+userId+'/website');
-            // probably will need to do stuff later so here it is.
+        function updateWebsite(websiteId, newWebsite) {
+            var oldWebsite = websites.find(function(website) {
+                return website['_id'] === websiteId;
+            });
+
+            if (typeof oldWebsite === "undefined") {
+            } else {
+                var index = websites.indexOf(oldWebsite);
+                websites.splice(index, 1, newWebsite);
+            }
         }
 
         function createWebsite(website, userId) {

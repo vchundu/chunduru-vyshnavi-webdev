@@ -11,14 +11,16 @@
 
         model.websites = websiteService.findAllWebsitesForUser(model.userId);
 
-        model.website = websiteService.findWebsiteByIdAndUser(model.websiteId, model.userId);
+        model.website = angular.copy(websiteService.findWebsiteByIdAndUser(model.websiteId, model.userId));
 
         model.deleteWebsite = function() {
-            websiteService.deleteWebsite(model.websiteId, model.userId);
+            websiteService.deleteWebsite(model.websiteId);
+            $location.url('/user/'+model.userId+'/website');
         };
 
         model.updateWebsite = function() {
-            websiteService.updateWebsite(model.websiteId, model.userId);
+            websiteService.updateWebsite(model.websiteId, model.website);
+            $location.url('/user/'+model.userId+'/website');
         };
 
     }

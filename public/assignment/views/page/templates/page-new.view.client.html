@@ -1,10 +1,8 @@
-
-
 <nav class="navbar navbar-fixed-top bg-info">
 
     <div class="container-fluid">
-        <a href="page-list.html"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
-        <a href="page-list.html"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a ng-click="model.createPage(page)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">New Page</a>
     </div>
 
@@ -12,39 +10,13 @@
 
 <div class="container-fluid">
     <div class="col-sm-4 hidden-xs vc-scrollable-left">
-        <ul class="list-group vc-no-border">
-            <li class="list-group-item">
-                <a href="../widget/widget-list.html">Blog Post </a>
-                <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../widget/widget-list.html">Blogs </a>
-                <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../widget/widget-list.html">Home </a>
-                <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../widget/widget-list.html">About </a>
-                <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="../widget/widget-list.html">Contact Us </a>
-                <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </li>
-
-        </ul>
-
+        <div ng-include="'views/page/templates/page-templates/page-list-temp.view.client.html'"></div>
     </div>
     <div class="col-sm-8 col-xs-12">
         <label for="name">Name</label>
         <input type="text"
                id="name"
+               ng-model="page.name"
                class="form-control"
                placeholder="Page Name"/>
 
@@ -52,6 +24,7 @@
         <input type="text"
                id="title"
                class="form-control"
+               ng-model="page.descriptio"
                placeholder="Page Title"/>
     </div>
 </div>
