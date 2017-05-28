@@ -9,7 +9,6 @@
         model.register = register;
         model.message = "";
         function register(username, password, verifyPassword, email, firstName, lastName) {
-            console.log("hallo");
 
             if (password !== verifyPassword) {
                 model.message = "Your passwords do not match";

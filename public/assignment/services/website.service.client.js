@@ -17,7 +17,7 @@
 
         var api = {
             findAllWebsitesForUser: findAllWebsitesForUser,
-            findWebsiteByIdAndUser: findWebsiteByIdAndUser,
+            findWebsiteById: findWebsiteById,
             deleteWebsite: deleteWebsite,
             updateWebsite: updateWebsite,
             createWebsite: createWebsite
@@ -31,9 +31,9 @@
             });
         }
 
-        function findWebsiteByIdAndUser(websiteId, userId) {
+        function findWebsiteById(websiteId) {
             var website = websites.find(function(website) {
-                return website['developerId'] === userId && website['_id'] === websiteId;
+                return website['_id'] === websiteId;
             });
 
             if (typeof website === "undefined") {
@@ -69,7 +69,7 @@
         }
 
         function createWebsite(website, userId) {
-            website['_id'] = new Date().getTime();
+            website['_id'] = new Date().getTime() + "";
             website['developerId'] = userId;
             websites.push(website);
         }

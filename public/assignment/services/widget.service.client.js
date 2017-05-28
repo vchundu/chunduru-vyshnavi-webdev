@@ -14,13 +14,14 @@
             { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
                 "url": "https://youtu.be/AM2Ivdi9c4E" },
             { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
+            { "_id": "799", "widgetType": "HTML", "pageId": "123", "text": "<p>Lorem ipsum</p>"},
             { "_id": "555", "widgetType": "HEADING", "pageId": "123", "size": 1, "text": "Vyshnavi"},
             { "_id": "565", "widgetType": "HEADING", "pageId": "123", "size": 2, "text": "Chunduru"},
             { "_id": "575", "widgetType": "HEADING", "pageId": "123", "size": 3, "text": "HTML"},
             { "_id": "585", "widgetType": "IMAGE", "pageId": "123", "width": "100%",
                 "url": "http://lorempixel.com/400/200/"},
             { "_id": "678", "widgetType": "YOUTUBE", "pageId": "123", "width": "100%",
-                "url": "https://youtu.be/AM2Ivdi9c4E" },
+                "url": "https://youtu.be/AM2Ivdi9c4E" }
         ];
 
         var api = {
@@ -34,8 +35,9 @@
         return api;
 
         function createWidget(widget, pageId) {
-            widget._id = new Date().getTime();
+            widget._id = new Date().getTime() + "";
             widget.pageId = pageId;
+            widgets.push(widget);
         }
 
         function deleteWidget(widgetId) {
@@ -52,16 +54,18 @@
         }
 
         function updateWidget(widgetId, newWidget) {
+            console.log(widgets);
             var oldWidget = widgets.find(function(widget) {
                 return widget["_id"] === widgetId;
             });
 
             if (typeof oldWidget === "undefined") {
-                // do nothing
+                console.log("undeined");
             } else {
                 var index = widgets.indexOf(oldWidget);
                 widgets.splice(index, 1, newWidget);
             }
+            console.log(widgets);
         }
 
         function findWidget(widgetId) {

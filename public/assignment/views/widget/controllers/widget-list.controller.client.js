@@ -21,11 +21,11 @@
 
         function trust(html) {
             // diligence to scrub any unsafe content
-            return  $sce.trustAsHtml(html);
+            return $sce.trustAsHtml(html);
         }
 
         function getYoutubeUrl(youtubeLink) {
-            console.log('triggered');
+            console.log(youtubeLink);
             var embedUrl = 'https://www.youtube.com/embed/';
             var youtubeLinkParts = youtubeLink.split('/');
             var id = youtubeLinkParts[youtubeLinkParts.length - 1];

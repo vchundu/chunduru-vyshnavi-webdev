@@ -17,23 +17,28 @@
     <label for="text">Text</label>
     <input type="text"
            id="text"
-           class="form-control"
-           ng-model="model.widget.text"/>
+           ng-model="model.widget.text"
+           class="form-control"/>
 
-    <label for="size">Size</label>
-    <select class="form-control"
-            id="size"
-            ng-model="model.widget.size">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-    </select>
+    <label for="url">URL</label>
+    <input type="text"
+           id="url"
+           ng-model="model.widget.url"
+           class="form-control"/>
 
+    <label for="width">Width</label>
+    <input type="text"
+           id="width"
+           ng-model="model.widget.width"
+           class="form-control"/>
 
+    <label for="upload">Upload</label>
+    <input type="file"
+           id="upload"
+           class="form-control"/>
+
+    <a ng-click="model.updateWidget(widget)"
+       class="btn btn-block btn-primary">Upload Image</a>
     <a ng-click="model.deleteWidget()"
        class="btn btn-block btn-danger">Delete</a>
-
 </div>

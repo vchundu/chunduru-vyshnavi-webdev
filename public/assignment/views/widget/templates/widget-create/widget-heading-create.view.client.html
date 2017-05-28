@@ -1,8 +1,8 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
         <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
-        <a ng-click="model.updateWidget(model.widget)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
-        <a class="navbar-brand" href="#">Edit Widget</a>
+        <a ng-click="model.createWidget(widget)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand" href="#">New Widget</a>
     </div>
 </nav>
 
@@ -11,19 +11,19 @@
     <label for="name">Name</label>
     <input type="text"
            id="name"
-           ng-model="model.widget.name"
-           class="form-control"/>
+           class="form-control"
+           ng-model="widget.name"/>
 
     <label for="text">Text</label>
     <input type="text"
            id="text"
            class="form-control"
-           ng-model="model.widget.text"/>
+           ng-model="widget.text"/>
 
     <label for="size">Size</label>
     <select class="form-control"
             id="size"
-            ng-model="model.widget.size">
+            ng-model="widget.size">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -31,9 +31,6 @@
         <option value="5">5</option>
         <option value="6">6</option>
     </select>
-
-
-    <a ng-click="model.deleteWidget()"
-       class="btn btn-block btn-danger">Delete</a>
-
 </div>
+
+

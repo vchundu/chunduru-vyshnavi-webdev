@@ -16,7 +16,6 @@
         init();
 
          function createWebsite(website) {
-             console.log(website);
             websiteService.createWebsite(website, model.userId);
             $location.url('/user/'+model.userId+'/website/');
         }

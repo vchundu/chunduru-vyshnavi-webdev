@@ -11,7 +11,7 @@
 
         model.websites = websiteService.findAllWebsitesForUser(model.userId);
 
-        model.website = angular.copy(websiteService.findWebsiteByIdAndUser(model.websiteId, model.userId));
+        model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
 
         model.deleteWebsite = function() {
             websiteService.deleteWebsite(model.websiteId);

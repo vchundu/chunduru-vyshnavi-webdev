@@ -41,9 +41,11 @@
         }
 
         function createPage(page, websiteId) {
-            page._id = new Date().getTime();
+            console.log(pages);
+            page._id = new Date().getTime() + "";
             page.websiteId = websiteId;
             pages.push(page);
+            console.log(pages);
         }
 
         function deletePage(pageId) {
