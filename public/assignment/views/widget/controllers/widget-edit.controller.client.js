@@ -22,11 +22,8 @@
         init();
 
         function updateWidget(widget) {
-            console.log(widgetService.findAllWidgetsOnPage(model.pageId));
-            console.log(widget);
             widgetService.updateWidget(model.widgetId, widget);
             $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
-            console.log(widgetService.findAllWidgetsOnPage(model.pageId));
         }
 
         function deleteWidget() {

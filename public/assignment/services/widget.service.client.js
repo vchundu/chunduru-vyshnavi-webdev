@@ -20,7 +20,7 @@
             { "_id": "575", "widgetType": "HEADING", "pageId": "123", "size": 3, "text": "HTML"},
             { "_id": "585", "widgetType": "IMAGE", "pageId": "123", "width": "100%",
                 "url": "http://lorempixel.com/400/200/"},
-            { "_id": "678", "widgetType": "YOUTUBE", "pageId": "123", "width": "100%",
+            { "_id": "450", "widgetType": "YOUTUBE", "pageId": "123", "width": "100%",
                 "url": "https://youtu.be/AM2Ivdi9c4E" }
         ];
 
@@ -54,18 +54,15 @@
         }
 
         function updateWidget(widgetId, newWidget) {
-            console.log(widgets);
             var oldWidget = widgets.find(function(widget) {
                 return widget["_id"] === widgetId;
             });
 
             if (typeof oldWidget === "undefined") {
-                console.log("undeined");
             } else {
                 var index = widgets.indexOf(oldWidget);
                 widgets.splice(index, 1, newWidget);
             }
-            console.log(widgets);
         }
 
         function findWidget(widgetId) {
