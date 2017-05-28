@@ -1,0 +1,19 @@
+<nav class="navbar navbar-fixed-top bg-info">
+
+    <div class="container-fluid">
+        <a href="#!/user/{{model.userId}}/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new"><span class="navbar-text pull-right glyphicon glyphicon-plus"></span></a>
+        <a class="navbar-brand" href="#">Pages</a>
+    </div>
+
+</nav>
+
+<div class="container-fluid">
+    <div ng-include="'views/page/templates/page-templates/page-list-temp.view.client.html'"></div>
+</div>
+
+<nav class="navbar bg-info navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#!/user/{{model.userId}}"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
+    </div>
+</nav>

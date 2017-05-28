@@ -3,20 +3,22 @@
         .module('WAM')
         .controller('websiteNewController', websiteNewController);
 
-    function websiteNewController(websiteService, $location) {
-        // todo have an init method
+    function websiteNewController(websiteService, $location, $routeParams) {
 
         var model = this;
-        // model.userId
+        model.userId = $routeParams['userId'];
+        model.websites = websiteService.findAllWebsitesForUser(model.userId);
 
-        function createWebsite(website) {
-            // also pass in userId into the service
-            // also pass in userId into the service
-            websiteService.createWebsite(website);
-            $location.url('/user/'+model.userId+'/website/'+website._id);
+        function init() {
+            model.createWebsite = createWebsite;
+        }
+
+        init();
+
+         function createWebsite(website) {
+             console.log(website);
+            websiteService.createWebsite(website, model.userId);
+            $location.url('/user/'+model.userId+'/website/');
         }
     }
 })();
-
-// todo: keep functions the same name in the template,controller, and service
-// so it's easier to figure out the work flow

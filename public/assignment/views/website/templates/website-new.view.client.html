@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-fixed-top bg-info">
+    <div class="container-fluid">
+        <a href="#!/user/{{model.userId}}/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a ng-click="model.createWebsite(website)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand" href="#">New Website</a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-sm-4 hidden-xs vc-scrollable-left">
+        <div ng-include="'views/website/templates/website-templates/website-list-temp.view.client.html'"></div>
+    </div>
+
+    <div class="col-sm-8 col-xs-12">
+
+        <label for="name">Name</label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               ng-model="website.name"
+               placeholder="Name"/>
+
+        <label for="description">Description</label>
+        <textarea name="description"
+                  id="description"
+                  cols="30"
+                  rows="3"
+                  placeholder="Description"
+                  ng-model="website.description"
+                  class="form-control"></textarea>
+
+    </div>
+</div>
+
+<nav class="navbar bg-info navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="#!/user/{{model.userId}}"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
+    </div>
+</nav>

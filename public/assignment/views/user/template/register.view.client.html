@@ -2,8 +2,8 @@
 
     <h1>Register</h1>
 
-    <div class="alert alert-danger" ng-show="registerVm.message">
-        {{ registerVm.message }}
+    <div class="alert alert-danger" ng-show="model.message">
+        {{ model.message }}
     </div>
     <input type="text"
            ng-model = "username"
@@ -35,7 +35,7 @@
            placeholder="last name"
            class="form-control">
 
-    <a ng-click="registerVm.register(username, password, verifyPassword, email, firstName, lastName)"
+    <a ng-click="model.register(username, password, verifyPassword, email, firstName, lastName)"
        class="btn btn-block btn-primary">Register</a>
 
     <a href="#!/"

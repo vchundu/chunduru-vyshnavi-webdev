@@ -3,10 +3,18 @@
         .module('WAM')
         .controller('websiteListController', websiteListController);
 
-    function websiteListController($routeParams) {
-        // todo have an init method
+    function websiteListController($routeParams, websiteService) {
 
         var model = this;
-        model.userId
+        model.userId = $routeParams['userId'];
+
+        function init() {
+            findAllWebsitesByUserId();
+        }
+        init();
+
+        function findAllWebsitesByUserId() {
+            model.websites = websiteService.findAllWebsitesForUser(model.userId);
+        }
     }
-})
+})();

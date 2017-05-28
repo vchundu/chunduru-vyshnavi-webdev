@@ -15,12 +15,54 @@
             { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
         ];
 
-        function findAllWebsitesForUser(userId) {
-            // filter through websites
+        var api = {
+            findAllWebsitesForUser: findAllWebsitesForUser,
+            findWebsiteByIdAndUser: findWebsiteByIdAndUser,
+            deleteWebsite: deleteWebsite,
+            updateWebsite: updateWebsite,
+            createWebsite: createWebsite
+        };
 
+        return api;
+
+        function findAllWebsitesForUser(userId) {
+            return websites.filter(function (website) {
+                return website['developerId'] === userId;
+            });
         }
-        // todo in create website, include date created
-        // and then in update website, also update the thing
+
+        function findWebsiteByIdAndUser(websiteId, userId) {
+            var website = websites.find(function(website) {
+                return website['developerId'] === userId && website['_id'] === websiteId;
+            });
+
+            if (typeof website === "undefined") {
+                return null;
+            } else {
+                return website;
+            }
+        }
+
+        function deleteWebsite(websiteId, userId) {
+            var website = findWebsiteByIdAndUser(websiteId, userId);
+
+            if (website !== null) {
+                var index = websites.indexOf(website);
+                websites.splice(index, 1);
+                $location.url('/user/'+userId+'/website');
+            }
+        }
+
+        function updateWebsite(websiteId, userId) {
+            $location.url('/user/'+userId+'/website');
+            // probably will need to do stuff later so here it is.
+        }
+
+        function createWebsite(website, userId) {
+            website['_id'] = new Date().getTime();
+            website['developerId'] = userId;
+            websites.push(website);
+        }
 
 
     }

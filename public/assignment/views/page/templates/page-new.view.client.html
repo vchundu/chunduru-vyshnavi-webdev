@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List of Pages</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
 
-    <nav class="navbar navbar-fixed-top bg-info">
 
-        <div class="container-fluid">
-            <a href="../website/website-list.html"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
-            <a href="page-new.html"><span class="navbar-text pull-right glyphicon glyphicon-plus"></span></a>
-            <a class="navbar-brand" href="#">Pages</a>
-        </div>
-
-    </nav>
+<nav class="navbar navbar-fixed-top bg-info">
 
     <div class="container-fluid">
+        <a href="page-list.html"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="page-list.html"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand" href="#">New Page</a>
+    </div>
 
+</nav>
+
+<div class="container-fluid">
+    <div class="col-sm-4 hidden-xs vc-scrollable-left">
         <ul class="list-group vc-no-border">
-
             <li class="list-group-item">
                 <a href="../widget/widget-list.html">Blog Post </a>
                 <a href="page-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
@@ -50,12 +41,23 @@
         </ul>
 
     </div>
+    <div class="col-sm-8 col-xs-12">
+        <label for="name">Name</label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               placeholder="Page Name"/>
 
-    <nav class="navbar bg-info navbar-fixed-bottom">
-        <div class="container-fluid">
+        <label for="title">Page Title</label>
+        <input type="text"
+               id="title"
+               class="form-control"
+               placeholder="Page Title"/>
+    </div>
+</div>
+
+<nav class="navbar bg-info navbar-fixed-bottom">
+    <div class="container-fluid">
             <a href="../user/profile.html"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
-        </div>
-    </nav>
-
-</body>
-</html>
+    </div>
+</nav>

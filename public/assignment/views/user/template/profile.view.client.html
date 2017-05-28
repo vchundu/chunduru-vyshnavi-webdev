@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
 
-        <a href="profile.html"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a href="#!/user/{{model.userId}}"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
 
         <a class="navbar-brand" href="#">Profile</a>
 
@@ -14,39 +14,40 @@
     <input type="text"
            id="username"
            class="form-control"
-           ng-model="profileVm.user.username"/>
+           ng-model="model.user.username"/>
 
     <label for="email">Email</label>
     <input type="email"
            id="email"
            class="form-control"
-           ng-model="profileVm.user.email"/>
+           ng-model="model.user.email"/>
 
     <label for="firstName">First Name</label>
     <input type="text"
            id="firstName"
            class="form-control"
            value="Vyshnavi"
-           ng-model="profileVm.user.firstName">
+           ng-model="model.user.firstName">
 
     <label for="lastName">Last Name</label>
     <input type="text"
            id="lastName"
            class="form-control"
            value="Chunduru"
-           ng-model="profileVm.user.lastName"/>
+           ng-model="model.user.lastName"/>
 
-    <a href="../website/website-list.html"
+    <a href="#!/user/{{model.userId}}/website"
        class="btn btn-block btn-primary">Websites</a>
 
-    <a href="../index.html"
+    <!-- todo -->
+    <a  href="#!/login"
        class="btn btn-block btn-danger">Logout</a>
 </div>
 
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
 
-        <a href="profile.html"><span class="navbar-text pull-right glyphicon glyphicon-user"></span></a>
+        <a href="#!/user/{{model.userId}}"><span class="navbar-text pull-right glyphicon glyphicon-user"></span></a>
 
     </div>
 </nav>

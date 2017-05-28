@@ -3,8 +3,8 @@
 
     <h1>Login</h1>
 
-    <div class="alert alert-danger" ng-show="loginVm.message">
-        {{ loginVm.message }}
+    <div class="alert alert-danger" ng-show="model.message">
+        {{ model.message }}
     </div>
     <input type="text"
            ng-model="username"
@@ -16,7 +16,7 @@
            placeholder="password"
            class="form-control">
 
-    <a ng-click="loginVm.checkLogin(username, password)"
+    <a ng-click="model.checkLogin(username, password)"
        class="btn btn-block btn-primary">Login</a>
 
     <a href="#!/register"
