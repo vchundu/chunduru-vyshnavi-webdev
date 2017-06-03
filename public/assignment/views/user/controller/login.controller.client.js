@@ -8,11 +8,15 @@
         var model  = this;
 
         model.checkLogin = function(username, password) {
+            userService
+                .findUserByCredentials(username, password)
+                .then(login,handleError); //success function, error function
 
-            var user = userService.findUserByCredentials(username, password);
-            if (user !== null) {
+            function login (user) {
                 $location.url("/user/"+user['_id']);
-            } else {
+            }
+
+            function handleError(error) {
                 model.message = "Sorry, username " + username + " was not found";
             }
         }

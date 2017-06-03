@@ -23,8 +23,14 @@
 
         function createWidget(widget) {
             widget.widgetType = model.widgetType;
-            widgetService.createWidget(widget, model.pageId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService
+                .createWidget(widget, model.pageId)
+                .then(function (status) {
+                    $location.url('/user/'+model.userId
+                                  +'/website/'+model.websiteId
+                                  +'/page/'+model.pageId
+                                  +'/widget');
+                });
         }
 
 

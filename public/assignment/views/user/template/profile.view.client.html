@@ -17,7 +17,7 @@
            ng-model="model.user.username"/>
 
     <label for="email">Email</label>
-    <input type="email"
+    <input type="text"
            id="email"
            class="form-control"
            ng-model="model.user.email"/>
@@ -35,6 +35,13 @@
            class="form-control"
            value="Chunduru"
            ng-model="model.user.lastName"/>
+
+
+    <a class="btn btn-block btn-success"
+       ng-click="model.updateUser(model.user)">Update</a>
+
+    <a class="btn btn-block btn-danger"
+       ng-click="model.deleteUser(model.user)">Unregister</a>
 
     <a href="#!/user/{{model.userId}}/website"
        class="btn btn-block btn-primary">Websites</a>

@@ -9,14 +9,22 @@
         model.websiteId = $routeParams['websiteId'];
 
         function init() {
-            model.pages = pageService.findAllPagesFromWebsite(model.websiteId);
+            pageService
+                .findAllPagesFromWebsite(model.websiteId)
+                .then(function(pages) {
+                    model.pages = pages;
+                });
+
             model.createPage = createPage;
         }
         init();
 
         function createPage(page) {
-            pageService.createPage(page, model.websiteId);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+            pageService
+                .createPage(page, model.websiteId)
+                .then(function(page) {
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+                });
         }
     }
 })();

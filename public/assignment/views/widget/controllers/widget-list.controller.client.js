@@ -14,10 +14,19 @@
             model.getYoutubeUrl = getYoutubeUrl;
             model.trust = trust;
             model.getWidgetUrlByType = getWidgetUrlByType;
-            model.widgets = widgetService.findAllWidgetsOnPage(model.pageId);
+            widgetService
+                .findAllWidgetsOnPage(model.pageId)
+                .then(foundWidgets, failure);
+        }
+        init();
+
+        function foundWidgets(widgets) {
+            model.widgets = widgets;
         }
 
-        init();
+        function failure(error) {
+            // todo
+        }
 
         function trust(html) {
             // diligence to scrub any unsafe content
@@ -25,7 +34,6 @@
         }
 
         function getYoutubeUrl(youtubeLink) {
-            console.log(youtubeLink);
             var embedUrl = 'https://www.youtube.com/embed/';
             var youtubeLinkParts = youtubeLink.split('/');
             var id = youtubeLinkParts[youtubeLinkParts.length - 1];

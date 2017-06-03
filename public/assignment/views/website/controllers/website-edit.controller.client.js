@@ -9,18 +9,33 @@
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
 
-        model.websites = websiteService.findAllWebsitesForUser(model.userId);
+        websiteService
+            .findAllWebsitesForUser(model.userId)
+            .then(function(websites) {
+                model.websites = websites;
+            });
 
-        model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
+        websiteService
+            .findWebsiteById(model.websiteId)
+            .then(function(website) {
+                model.website = angular.copy(website);
+            });
+
 
         model.deleteWebsite = function() {
-            websiteService.deleteWebsite(model.websiteId);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(function(website) {
+                    $location.url('/user/'+model.userId+'/website');
+                });
         };
 
         model.updateWebsite = function() {
-            websiteService.updateWebsite(model.websiteId, model.website);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .updateWebsite(model.websiteId, model.website)
+                .then(function(website) {
+                    $location.url('/user/'+model.userId+'/website');
+                });
         };
 
     }

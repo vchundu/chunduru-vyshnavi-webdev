@@ -12,24 +12,40 @@
         model.pageId = $routeParams['pageId'];
 
         function init() {
-            model.pages = pageService.findAllPagesFromWebsite(model.websiteId);
+            pageService
+                .findAllPagesFromWebsite(model.websiteId)
+                .then(function(pages) {
+                    model.pages = pages;
+                });
             // probably would angular.copy before passing this in
-            model.page = angular.copy(pageService.findPageByIdAndWebsite(model.pageId, model.websiteId));
+
+            pageService
+                .findPageById(model.pageId)
+                .then(function(page) {
+                    model.page = angular.copy(page);
+                });
+
+
             model.updatePage = updatePage;
             model.deletePage = deletePage;
         }
-
         init();
 
         function updatePage() {
-            pageService.updatePage(model.pageId, model.page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            pageService
+                .updatePage(model.pageId, model.page)
+                .then(function(page) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                });
 
         }
 
         function deletePage() {
-            pageService.deletePage(model.pageId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            pageService
+                .deletePage(model.pageId)
+                .then(function(page) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                });
         }
     }
 })();
