@@ -1,8 +1,6 @@
 // javascript running on the server
 var app = require('../express');
 var bodyParser = require('body-parser');
-var multer = require('multer');
-
 
 app.use(bodyParser.json());
 

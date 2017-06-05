@@ -8,6 +8,7 @@
 
 
 <div class="container-fluid">
+    <!--todo turn this into a form?-->
     <label for="name">Name</label>
     <input type="text"
            id="name"
@@ -32,13 +33,25 @@
            ng-model="model.widget.width"
            class="form-control"/>
 
-    <label for="upload">Upload</label>
-    <input type="file"
-           id="upload"
-           class="form-control"/>
-
     <a ng-click="model.updateWidget(widget)"
-       class="btn btn-block btn-primary">Upload Image</a>
+       class="btn btn-block btn-primary">Upload Image from URL</a>
+
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search"
+       class="btn btn-block btn-info">
+        Select an Image from Flickr
+    </a>
+
+    <label for="upload">Upload</label>
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" id="upload">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image from Computer</button>
+    </form>
+
     <a ng-click="model.deleteWidget()"
        class="btn btn-block btn-danger">Delete</a>
 </div>

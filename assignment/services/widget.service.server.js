@@ -1,5 +1,8 @@
-// widget.service.server.js
 var app = require('../../express');
+
+// for image file uploads
+var multer = require('multer');
+var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -72,7 +75,19 @@ function updateWidget(req, res) {
 app.put('/api/assignment/page/:pageId/widget?initial=index1&final=index2', moveWidget);
 
 function moveWidget(req, res) {
+    var pageId = req.params['pageId'];
+    var initial = req.params['index1'];
+    var final = req.params['index2'];
 
+    // TODO might have to impleement bounds checking?
+
+    var widgetsOnPage = widgets.filter(function(widget) {
+        return widget['pageId'] === pageId;
+    });
+
+     var widget = widgetsOnPage.splice(initial, 1)[0];
+     widgetsOnPage.splice(final, 0, widget);
+     res.sendStatus(200);
 }
 
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
@@ -91,6 +106,37 @@ function deleteWidget(req, res) {
         widgets.splice(index, 1);
         res.sendStatus(200);
     }
+}
+
+app.post('/api/assignment/upload', upload.single('myFile'), uploadImage);
+
+// todo think about how buttons work on this page
+function uploadImage(req, res) {
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    widget = widgets.find(function(widget) {
+        return widget["_id"] === widgetId;
+    });
+
+    widget.url = 'uploads/'+filename;
+
+    var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/";
+
+    res.redirect(callbackUrl);
+
 }
 
 

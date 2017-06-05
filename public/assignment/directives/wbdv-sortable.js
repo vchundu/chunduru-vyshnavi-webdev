@@ -4,8 +4,9 @@
         .directive('wbdvSortable', wbdvSortableTag);
 
     function wbdvSortableTag() {
-        alert('is trigger');
         function moveWidget(scope, element, attrs) {
+            console.log(element);
+            console.log(attrs);
             $(element).sortable();
         }
 

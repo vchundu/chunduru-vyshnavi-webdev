@@ -31,10 +31,17 @@
            ng-width="widget.width"
            class="form-control"/>
 
+    <!--TODO deal with this-->
     <label for="upload">Upload</label>
-    <input type="file"
-           id="upload"
-           class="form-control"/>
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" id="upload">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image from Computer</button>
+    </form>
 
     <a ng-click="model.createWidget(widget)"
        class="btn btn-block btn-primary">Upload Image</a>
