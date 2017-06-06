@@ -14,7 +14,7 @@
                     end = ui.item.index();
                     $http.put('/api/assignment/page/'+pageId+'/widget?initial='+start+"&final="+end)
                         .then(function(response) {
-                            console.log('updated');
+                            return response.data;
                         });
 
                 },

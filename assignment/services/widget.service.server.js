@@ -75,7 +75,6 @@ function updateWidget(req, res) {
 app.put('/api/assignment/page/:pageId/widget', moveWidget);
 
 function moveWidget(req, res) {
-    console.log(req.query);
     var pageId = req.params['pageId'];
     var initial = req.query['initial'];
     var final = req.query['final'];
