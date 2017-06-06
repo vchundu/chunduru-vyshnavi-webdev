@@ -2,6 +2,9 @@
 var app = require('../express');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.Promise = require('q').Promise; // there's more code than this, pull it from github
+
 app.use(bodyParser.json());
 
 require('./services/user.service.server');
