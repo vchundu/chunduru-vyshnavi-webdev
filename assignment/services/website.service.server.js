@@ -1,4 +1,5 @@
 var app = require("../../express"); // basically find the express fle
+var websiteModel = require("../models/website/website.model.server");
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -13,20 +14,23 @@ var websites = [
 app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
 
 function findAllWebsitesForUser(req, res) {
-    var userId = req.params['userId'];
-    var resultSet = websites.filter(function (website) {
-        return website['developerId'] === userId;
-    });
-    res.json(resultSet);
+
+    websiteModel
+        .findAllWebsitesForUser(req.params['userId'])
+        .then(function(websites) {
+            res.json(websites);
+        });
 }
 
 app.post('/api/assignment/user/:userId/website', createWebsite);
 
 function createWebsite(req, res) {
     var website = req.body;
-    website['_id'] = new Date().getTime() + "";
-    websites.push(website);
-    res.json(website);
+    websiteModel
+        .createModel(website)
+        .then(function(website) {
+            res.json(website);
+        });
 }
 
 app.get('/api/assignment/website/:websiteId', findWebsiteById);
