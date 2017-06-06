@@ -7,17 +7,6 @@
 </nav>
 
 <div class="container-fluid">
-    <label for="name">Name</label>
-    <input type="text"
-           id="name"
-           ng-model="widget.name"
-           class="form-control"/>
-
-    <label for="text">Text</label>
-    <input type="text"
-           id="text"
-           ng-model="widget.text"
-           class="form-control"/>
 
     <label for="url">URL</label>
     <input type="text"
@@ -31,15 +20,14 @@
            ng-width="widget.width"
            class="form-control"/>
 
-    <!--TODO deal with this-->
     <label for="upload">Upload</label>
     <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" id="upload">
         <input  name="myFile"    type="file" class="form-control"/>
-        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+        <input  name="width"     value="{{widget.width}}" style="display: none"/>
         <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
-        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <input  name="widgetId"  value=""   style="display: none"/>
         <button type="submit"    class="btn btn-block btn-primary">Upload Image from Computer</button>
     </form>
 

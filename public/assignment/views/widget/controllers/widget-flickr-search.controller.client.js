@@ -1,9 +1,6 @@
 /* TODO
-    - fix everything for creating images
+    - flickr for createImage?
     - go through what you lost points on for previous assignments
-    - finish select photo
-    - deal with that widgetType error when creating/editing widgets
-    -
  */
 
 
@@ -13,8 +10,12 @@
         .module('WAM')
         .controller('flickrController', flickrController);
 
-    function flickrController(flickrService, widgetService) {
+    function flickrController(flickrService, widgetService, $routeParams, $location) {
         var model = this;
+        var userId = $routeParams['userId'];
+        var websiteId = $routeParams['websiteId'];
+        var pageId = $routeParams['pageId'];
+        var widgetId = $routeParams['widgetId'];
 
         model.searchPhotos = searchPhotos;
         model.selectPhoto = selectPhoto;
@@ -33,10 +34,12 @@
         function selectPhoto(photo) {
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+
+            var widget = {"url" : url, "width": "100%", "widgetType" : "IMAGE", "_id":widgetId};
             widgetService
-                .updateWidget(websiteId, pageId, widgetId, {url: url})
+                .updateWidget(widgetId, widget)
                 .then(function(response) {
-                    return response.data;
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
                 });
         }
 

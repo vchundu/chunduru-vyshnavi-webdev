@@ -33,15 +33,11 @@
                 };
                 userService
                     .createUser(user)
-                    .then(createdUser, failure);
+                    .then(createdUser);
             }
 
             function createdUser(user) {
                 $location.url('/user/'+user._id);
-            }
-
-            function failure(error) {
-                console.log(error.statusCode);
             }
 
 

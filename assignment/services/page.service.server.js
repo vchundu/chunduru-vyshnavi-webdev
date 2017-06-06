@@ -14,7 +14,6 @@ function createPage(req, res) {
     var page = req.body;
     page._id = new Date().getTime() + "";
     pages.push(page);
-    console.log(pages);
     res.json(page);
 }
 
@@ -40,7 +39,6 @@ function findPageById(req, res) {
     });
 
     if (typeof page === "undefined") {
-        console.log('in here');
         res.sendStatus(404);
     } else {
         res.json(page);

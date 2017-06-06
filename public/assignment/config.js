@@ -29,7 +29,6 @@
                 controller: 'websiteListController',
                 controllerAs: 'model'
             })
-            // todo wtf
             .when('/user/:userId/website/new', {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'websiteNewController',

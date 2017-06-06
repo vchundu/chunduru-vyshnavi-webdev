@@ -16,16 +16,12 @@
             model.getWidgetUrlByType = getWidgetUrlByType;
             widgetService
                 .findAllWidgetsOnPage(model.pageId)
-                .then(foundWidgets, failure);
+                .then(foundWidgets);
         }
         init();
 
         function foundWidgets(widgets) {
             model.widgets = widgets;
-        }
-
-        function failure(error) {
-            // todo
         }
 
         function trust(html) {

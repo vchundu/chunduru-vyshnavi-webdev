@@ -72,21 +72,25 @@ function updateWidget(req, res) {
     res.sendStatus(404);
 }
 
-app.put('/api/assignment/page/:pageId/widget?initial=index1&final=index2', moveWidget);
+app.put('/api/assignment/page/:pageId/widget', moveWidget);
 
 function moveWidget(req, res) {
+    console.log(req.query);
     var pageId = req.params['pageId'];
-    var initial = req.params['index1'];
-    var final = req.params['index2'];
-
-    // TODO might have to impleement bounds checking?
+    var initial = req.query['initial'];
+    var final = req.query['final'];
 
     var widgetsOnPage = widgets.filter(function(widget) {
         return widget['pageId'] === pageId;
     });
 
      var widget = widgetsOnPage.splice(initial, 1)[0];
-     widgetsOnPage.splice(final, 0, widget);
+     var indexOfWidget = widgets.indexOf(widget);
+     widgets.splice(indexOfWidget, 1);
+     finalNum = parseInt(final);
+     var index = widgets.indexOf(widgetsOnPage[finalNum]);
+     widgets.splice(index, 0, widget);
+
      res.sendStatus(200);
 }
 
@@ -127,11 +131,24 @@ function uploadImage(req, res) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    widget = widgets.find(function(widget) {
-        return widget["_id"] === widgetId;
-    });
-
-    widget.url = 'uploads/'+filename;
+    if (widgetId === "") {
+        widget = {
+            "_id": new Date().getTime() + "",
+            "widgetType": "IMAGE",
+            "pageId": pageId,
+            "width": width,
+            "name": req.body.name,
+            "text": req.body.text
+        };
+        widgetId = widget._id;
+        widget.url = 'uploads/'+filename;
+        widgets.push(widget);
+    } else {
+        widget = widgets.find(function(widget) {
+            return widget["_id"] === widgetId;
+        });
+        widget.url = 'uploads/'+filename;
+    }
 
     var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/";
 

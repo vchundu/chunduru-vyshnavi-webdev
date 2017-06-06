@@ -13,13 +13,13 @@
 
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
-        model.editWidgetContent = editWidgetContent;
 
         function init() {
             widgetService
                 .findWidgetById(model.widgetId)
                 .then(function(widget) {
                     model.widget = angular.copy(widget);
+                    model.editWidgetContent = editWidgetContent;
                 });
         }
 
@@ -43,7 +43,6 @@
                 });
         }
 
-        //TODO
         function editWidgetContent() {
             return 'views/widget/templates/widget-edit/widget-'
                        +model.widget.widgetType.toLowerCase()
