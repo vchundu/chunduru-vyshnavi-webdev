@@ -30,12 +30,23 @@
 
         <h1>VSpotify Brain Child</h1>
 
+
         <div class="col-sm-4">
             <h2>Search By Album</h2>
             <div class="input-group">
                 <input ng-model="searchText" type="text" class="form-control">
                 <span class="input-group-btn">
-                <a ng-click="model.searchMusic(searchText)" class="btn btn-default" type="button">
+                <a ng-click="model.searchAlbum(searchText)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
+            </div>
+
+            <h2>Search Album By Id</h2>
+            <div class="input-group">
+                <input ng-model="searchId" type="text" class="form-control">
+                <span class="input-group-btn">
+                <a ng-click="model.searchAlbumById(searchId)" class="btn btn-default" type="button">
                     <span class="glyphicon glyphicon-search"></span>
                 </a>
             </span>
@@ -54,8 +65,6 @@
         <div class="col-sm-8">
             <a ng-href="{{model.song.url}}" target="_blank"><h1>{{model.song.name}}</h1></a>
             <h2>{{model.song.artist}}</h2>
-            <img width="100px"
-                 ng-src="{{model.getImage(model.song)}}">
         </div>
 
     </div>
