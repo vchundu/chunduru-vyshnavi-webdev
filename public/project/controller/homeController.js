@@ -7,8 +7,7 @@
         var model = this;
 
         var apiKey = "75976284cdc3d5dddbf7f5ea3af59ca4";
-        var sharedSecret = "7e20fa25d81176c05ed8e0950d93625";
-        var apiRoot = "http://ws.audioscrobbler.com/2.0/";
+        var apiRoot = "https://ws.audioscrobbler.com/2.0/";
         model.searchAlbum = searchAlbum;
         model.getImage = getImage;
         model.searchAlbumById = searchAlbumById;
