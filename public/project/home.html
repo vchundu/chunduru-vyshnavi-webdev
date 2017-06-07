@@ -1,0 +1,24 @@
+<div class="container-fluid">
+
+    <h1>Project Home Page</h1>
+
+    <h2>Search for an Artist By Name</h2>
+    <div class="input-group">
+        <input ng-model="searchName" type="text" class="form-control">
+        <span class="input-group-btn">
+                <a ng-click="model.artistByName(searchName)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
+    </div>
+
+    <h2>Search for an Artist By Id</h2>
+    <div class="input-group">
+        <input ng-model="searchId" type="text" class="form-control">
+        <span class="input-group-btn">
+                <a ng-click="model.artistById(searchId)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
+    </div>
+</div>

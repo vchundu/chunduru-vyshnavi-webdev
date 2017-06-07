@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="VSpotify">
 <head>
     <meta charset="UTF-8">
     <title>Project Home Page</title>
+
+    <!--Style Sheets-->
+    <link rel="stylesheet" href="../assignment/vendor/css/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assignment/vendor/css/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!--External JS Libraries-->
+    <!--JQuery + JQuery-UI-->
+    <script src="../assignment/vendor/js/jquery/jquery.min.js"></script>
+    <script src="../assignment/vendor/js/jquery/jquery-ui.js"></script>
+    <!--Angular-->
+    <script src="../assignment/vendor/js/angular/angular.min.js"></script>
+    <script src="../assignment/vendor/js/angular/angular-route.min.js"></script>
+
+    <!--app.js, config.js-->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--Controllers-->
+    <script src="controller/homePageController.js"></script>
+
+
 </head>
 <body>
-    <h1>Project Home Page</h1>
+
+    <div ng-view></div>
 </body>
 </html>

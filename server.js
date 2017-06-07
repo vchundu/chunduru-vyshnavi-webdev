@@ -7,5 +7,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(app.express.static(__dirname + '/public'));
 
 require('./assignment/app');
+require('./project/spotify');
 
 app.listen(process.env.PORT || 3000);
