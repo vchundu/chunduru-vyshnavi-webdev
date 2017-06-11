@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise; // there's more code than this, pull it from github
+mongoose.connect('mongodb://localhost/webdev_assignment');
 
 app.use(bodyParser.json());
 

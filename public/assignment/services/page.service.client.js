@@ -30,7 +30,7 @@
         }
 
         function createPage(page, websiteId) {
-            page.websiteId = websiteId;
+            page._website = websiteId;
             var url = "/api/assignment/website/"+websiteId+"/page/";
             return $http.post(url, page)
                 .then(function(response) {
@@ -48,6 +48,7 @@
 
         function updatePage(pageId, newPage) {
             var url = "/api/assignment/page/"+pageId;
+            console.log(newPage);
             return $http.put(url, newPage)
                 .then(function(response) {
                     return response.data;

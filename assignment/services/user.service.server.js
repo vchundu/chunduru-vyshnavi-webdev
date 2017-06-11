@@ -44,18 +44,27 @@ app.get('/api/assignment/username/user', findUserByUsername);
 function findUserByUsername(req, res) {
     var username = req.query['username'];
 
-    var user = users.find(function(user) {
-        return user.username === username &&
-            user.password === password;
-    });
+    userModel
+        .findUserByUsername(req.query['username'])
+        .then(function(user) {
+           res.json(user);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
-    if (typeof user === "undefined") {
-        res.sendStatus(404); //resource is not found error
-        return;
-    } else {
-        res.json(user);
-        return;
-    }
+    //
+    // var user = users.find(function(user) {
+    //     return user.username === username &&
+    //         user.password === password;
+    // });
+    //
+    // if (typeof user === "undefined") {
+    //     res.sendStatus(404); //resource is not found error
+    //     return;
+    // } else {
+    //     res.json(user);
+    //     return;
+    // }
 }
 
 //path parameters
@@ -67,17 +76,9 @@ function findUserById(req, res) {
         .findUserById(userId)
         .then(function(user) {
             res.json(user);
+        }, function(error) {
+            res.sendStatus(404);
         });
-    // var user = users.find(function (user) {
-    //     return user._id === userId;
-    // });
-    // if (typeof user === "undefined") {
-    //     res.sendStatus(404);
-    //     return;
-    // } else {
-    //     res.json(user);
-    //     return;
-    // }
 }
 
 
@@ -89,6 +90,8 @@ function createUser(req, res) {
         .createUser(user)
         .then(function(user) {
             res.json(user);
+        }, function(error) {
+            res.sendStatus(404);
         });
 }
 
@@ -101,17 +104,10 @@ function updateUser(req, res) {
     userModel
         .updateUser(userId, user)
         .then(function(response) {
-            rese.sendStatus(200);
+            res.sendStatus(200);
+        }, function(error) {
+            res.sendStatus(404);
         });
-
-    // for(var u in users) {
-    //     if (userId === users[u]._id) {
-    //         users[u] = user;
-    //         res.sendStatus(200);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 app.delete('/api/assignment/user/:userId', deleteUser);
@@ -123,17 +119,8 @@ function deleteUser(req, res) {
         .deleteUser(userId)
         .then(function(response) {
             res.sendStatus(200);
-        })
-    // var user = users.find(function(user) {
-    //     return userId === user["_id"];
-    // });
-    //
-    // if (typeof user === "undefined") {
-    //     res.sendStatus(404);
-    // } else {
-    //     var index = users.indexOf(user);
-    //     users.splice(index, 1);
-    //     res.sendStatus(200);
-    // }
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
 }
