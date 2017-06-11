@@ -4,6 +4,7 @@ var websiteModel = require("../models/website/website.model.server");
 /* TODO
  * add in error cases
  * fix up everything wrong with assignment 4
+ * add flickr to createimage widget
  * fix the developerId if it ever comes up, websiteId, pageId
  */
 

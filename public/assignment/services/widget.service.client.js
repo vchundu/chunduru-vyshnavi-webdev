@@ -33,7 +33,7 @@
         };
 
         function createWidget(widget, pageId) {
-            widget.pageId = pageId;
+            widget._page = pageId;
             var url = "/api/assignment/page/:pageId/widget";
             return $http.post(url, widget)
                 .then(function(response) {
