@@ -22,6 +22,7 @@
         }
 
         function createWidget(widget) {
+            console.log(widget);
             widget.widgetType = model.widgetType.toUpperCase();
             widgetService
                 .createWidget(widget, model.pageId)
