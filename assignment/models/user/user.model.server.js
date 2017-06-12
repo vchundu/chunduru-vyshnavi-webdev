@@ -30,7 +30,7 @@ function findUserByUsername(username) {
 }
 
 function deleteUser(userId) {
-    return userMode.remove({_id: userId});
+    return userModel.remove({_id: userId});
 }
 
 function updateUser(userId, newUser) {
@@ -55,9 +55,11 @@ function addWebsite(userId, websiteId) {
 }
 
 function removeWebsite(userId, websiteId) {
+    console.log('inside removeWebsite');
     return userModel
         .findById(userId)
         .then(function (user) {
+            console.log('have found the user');
             var index = user._websites.indexOf(websiteId);
             user._websites.splice(index, 1);
             return user.save();

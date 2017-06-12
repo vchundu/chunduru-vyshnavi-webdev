@@ -29,14 +29,12 @@ app.post('/api/assignment/page/:pageId/widget', createWidget);
 
 function createWidget(req, res) {
     var widget = req.body;
-    console.log(widget);
     widgetModel
         .createWidget(widget)
         .then(function(widget) {
             res.json(widget);
         }, function(error) {
-            console.log(error);
-            // res.sendStatus(404);
+            res.sendStatus(404);
         });
 }
 

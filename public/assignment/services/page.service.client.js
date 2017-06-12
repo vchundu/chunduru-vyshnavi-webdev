@@ -48,7 +48,6 @@
 
         function updatePage(pageId, newPage) {
             var url = "/api/assignment/page/"+pageId;
-            console.log(newPage);
             return $http.put(url, newPage)
                 .then(function(response) {
                     return response.data;

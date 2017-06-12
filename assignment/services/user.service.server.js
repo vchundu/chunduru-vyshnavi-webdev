@@ -47,7 +47,11 @@ function findUserByUsername(req, res) {
     userModel
         .findUserByUsername(req.query['username'])
         .then(function(user) {
-           res.json(user);
+            if (user === null) {
+                res.sendStatus(404);
+            } else {
+                res.json(user);
+            }
         }, function(error) {
             res.sendStatus(404);
         });

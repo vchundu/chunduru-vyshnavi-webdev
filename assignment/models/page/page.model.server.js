@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('PageModel', pageSchema);
+var websiteModel = require('../website/website.model.server');
 
 module.exports = pageModel;
 pageModel.createPage = createPage;
@@ -33,7 +34,7 @@ function updatePage(pageId, newPage) {
 }
 
 function deletePage(pageId) {
-    pageModel
+    return pageModel
         .findPageById(pageId)
         .then(function(page) {
             websiteId = page._website;
@@ -47,9 +48,20 @@ function deletePage(pageId) {
 }
 
 function addWidget(pageId, widgetId) {
-
+    return pageModel
+        .findById(pageId)
+        .then(function(page) {
+            page._widget.push(widgetId);
+            return page.save();
+        })
 }
 
 function removeWidget(pageId, widgetId) {
-
+    return pageModel
+        .findById(pageId)
+        .then(function(page) {
+            var index = page._widget.indexOf(widgetId);
+            page._widget.splice(index,1);
+            return page.save();
+        });
 }

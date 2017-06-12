@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var websiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
-var userModel = require('../website/website.model.server');
+var userModel = require('../user/user.model.server');
 
 module.exports = websiteModel;
 websiteModel.createWebsite = createWebsite;
@@ -35,13 +35,15 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function deleteWebsite(websiteId) {
-    websiteModel
+    console.log('inside deleteWebsite');
+    return websiteModel
         .findWebsiteById(websiteId)
         .then(function(website) {
             userId = website._user;
             return websiteModel
                 .remove({_id : websiteId})
                 .then(function(status) {
+                    console.log('have removed the website');
                     return userModel
                         .removeWebsite(userId, websiteId);
                 })

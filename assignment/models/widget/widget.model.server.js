@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var widgetSchema = require('./widget.schema.server');
 var widgetModel = mongoose.model('WidgetModel', widgetSchema);
+var pageModel = require('../page/page.model.server');
 
 module.exports = widgetModel;
 
@@ -32,7 +33,7 @@ function updateWidget(widgetId, newWidget) {
 }
 
 function deleteWidget(widgetId) {
-    widgetModel
+    return widgetModel
         .findWidgetById(widgetId)
         .then(function(widget) {
             return widgetModel
