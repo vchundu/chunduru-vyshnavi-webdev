@@ -1,5 +1,6 @@
 var app = require('../../express');
 var widgetModel = require('../models/widget/widget.model.server');
+var pageModel = require('../models/page/page.model.server');
 
 // for image file uploads
 var multer = require('multer');
@@ -42,10 +43,11 @@ app.get('/api/assignment/page/:pageId/widget', findAllWidgetsForPage);
 
 function findAllWidgetsForPage(req, res) {
 
+
     widgetModel
         .findAllWidgetsOnPage(req.params['pageId'])
-        .then(function(widgets) {
-            res.json(widgets);
+        .then(function(page) {
+            res.json(page._widget);
         }, function(error) {
             res.sendStatus(404);
         });
@@ -87,16 +89,26 @@ function moveWidget(req, res) {
     var initial = req.query['initial'];
     var final = req.query['final'];
 
-    var widgetsOnPage = widgets.filter(function(widget) {
-        return widget['pageId'] === pageId;
-    });
+    console.log(initial);
+    console.log(final);
+    widgetModel
+        .moveWidget(pageId,initial, final)
+        .then(function(response) {
+            res.sendStatus(200);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
-     var widget = widgetsOnPage.splice(initial, 1)[0];
-     var indexOfWidget = widgets.indexOf(widget);
-     widgets.splice(indexOfWidget, 1);
-     finalNum = parseInt(final);
-     var index = widgets.indexOf(widgetsOnPage[finalNum]);
-     widgets.splice(index, 0, widget);
+    // var widgetsOnPage = widgets.filter(function(widget) {
+    //     return widget['pageId'] === pageId;
+    // });
+    //
+    //  var widget = widgetsOnPage.splice(initial, 1)[0];
+    //  var indexOfWidget = widgets.indexOf(widget);
+    //  widgets.splice(indexOfWidget, 1);
+    //  finalNum = parseInt(final);
+    //  var index = widgets.indexOf(widgetsOnPage[finalNum]);
+    //  widgets.splice(index, 0, widget);
 
      res.sendStatus(200);
 }

@@ -76,7 +76,6 @@ function updateWebsite(req, res) {
 app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
 function deleteWebsite(req, res) {
-    console.log('inside service.server');
     websiteModel
         .deleteWebsite(req.params['websiteId'])
         .then(function(response) {

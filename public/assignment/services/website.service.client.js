@@ -30,7 +30,6 @@
         }
 
         function deleteWebsite(websiteId) {
-            console.log('delete website cloent');
             var url = "/api/assignment/website/"+websiteId;
             return $http.delete(url)
                 .then(function(response) {

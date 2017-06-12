@@ -35,7 +35,6 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function deleteWebsite(websiteId) {
-    console.log('inside deleteWebsite');
     return websiteModel
         .findWebsiteById(websiteId)
         .then(function(website) {
@@ -43,7 +42,6 @@ function deleteWebsite(websiteId) {
             return websiteModel
                 .remove({_id : websiteId})
                 .then(function(status) {
-                    console.log('have removed the website');
                     return userModel
                         .removeWebsite(userId, websiteId);
                 })
