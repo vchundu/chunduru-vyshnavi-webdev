@@ -1,10 +1,3 @@
-/* TODO
-    - flickr for createImage?
-    - go through what you lost points on for previous assignments
- */
-
-
-
 (function() {
     angular
         .module('WAM')
@@ -15,7 +8,6 @@
         var userId = $routeParams['userId'];
         var websiteId = $routeParams['websiteId'];
         var pageId = $routeParams['pageId'];
-        var widgetId = $routeParams['widgetId'];
 
         model.searchPhotos = searchPhotos;
         model.selectPhoto = selectPhoto;
@@ -35,12 +27,23 @@
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
 
-            var widget = {"url" : url, "width": "100%", "widgetType" : "IMAGE", "_id":widgetId};
-            widgetService
-                .updateWidget(widgetId, widget)
-                .then(function(response) {
-                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
-                });
+            var widget = {"_page": pageId, "url" : url, "width": "100%", "widgetType" : "IMAGE"};
+
+            var widgetId = $routeParams['widgetId'];
+            if (typeof widgetId === "undefined") {
+                widgetService
+                    .createWidget(widget)
+                    .then(function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    });
+            } else {
+                widget._id = widgetId;
+                widgetService
+                    .updateWidget(widgetId, widget)
+                    .then(function(response) {
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    });
+            }
         }
 
     }

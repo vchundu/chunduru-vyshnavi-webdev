@@ -73,7 +73,7 @@ function updateWebsite(req, res) {
         });
 }
 
-app.delete('/api/assignment/website/:websiteId', deleteWebsite);
+app.delete('/api/assignment/user/:userId/website/:websiteId', deleteWebsite);
 
 function deleteWebsite(req, res) {
 

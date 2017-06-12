@@ -4,6 +4,7 @@
         .controller('flickrController', flickrController);
 
     function flickrController(FlickrService) {
+        console.log('inside flickr controller');
         var model = this;
 
         model.searchPhotos = function(searchTerm) {
