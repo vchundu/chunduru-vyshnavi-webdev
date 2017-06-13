@@ -1,17 +1,16 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
         <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
-        <a ng-click="model.updateWidget(model.widget)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
-        <a class="navbar-brand" href="#">Edit Widget</a>
+        <a ng-click="model.createWidget(widget)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand" href="#">New Widget</a>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <div ng-model="model.widget.text"
+    <div ng-model="widget.text"
          text-angular
          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
         ['indent','outdent'],['html']]">
     </div>
 </div>
-

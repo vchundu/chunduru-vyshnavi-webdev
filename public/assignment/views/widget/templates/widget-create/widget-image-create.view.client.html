@@ -17,8 +17,13 @@
     <label for="width">Width</label>
     <input type="text"
            id="width"
-           ng-width="widget.width"
+           ng-model="widget.width"
            class="form-control"/>
+
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widgetSearch"
+       class="btn btn-block btn-info">
+        Select an Image from Flickr
+    </a>
 
     <label for="upload">Upload</label>
     <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data" id="upload">

@@ -1,4 +1,12 @@
 var app = require("../../express"); // basically find the express fle
+var websiteModel = require("../models/website/website.model.server");
+
+/* TODO
+ * add in error cases
+ * fix up everything wrong with assignment 4
+ * add flickr to createimage widget
+ * fix the developerId if it ever comes up, websiteId, pageId
+ */
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -13,36 +21,41 @@ var websites = [
 app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
 
 function findAllWebsitesForUser(req, res) {
-    var userId = req.params['userId'];
-    var resultSet = websites.filter(function (website) {
-        return website['developerId'] === userId;
-    });
-    res.json(resultSet);
+
+    websiteModel
+        .findAllWebsitesForUser(req.params['userId'])
+        .then(function(websites) {
+            res.json(websites);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 }
 
 app.post('/api/assignment/user/:userId/website', createWebsite);
 
 function createWebsite(req, res) {
     var website = req.body;
-    website['_id'] = new Date().getTime() + "";
-    websites.push(website);
-    res.json(website);
+    websiteModel
+        .createWebsite(website)
+        .then(function(website) {
+            res.json(website);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 }
 
 app.get('/api/assignment/website/:websiteId', findWebsiteById);
 
 function findWebsiteById(req, res) {
-    var websiteId = req.params['websiteId'];
 
-    var website = websites.find(function(web) {
-        return web._id === websiteId;
-    });
+    websiteModel
+        .findWebsiteById(req.params['websiteId'])
+        .then(function(user) {
+            res.json(user);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
-    if (typeof website === "undefined") {
-        res.sendStatus(404);
-    } else {
-        res.json(website);
-    }
 }
 
 app.put('/api/assignment/website/:websiteId', updateWebsite);
@@ -51,29 +64,24 @@ function updateWebsite(req, res) {
     var website = req.body;
     var websiteId = req.params['websiteId'];
 
-    for(var w in websites) {
-        if (websiteId === websites[w]._id) {
-            websites[w] = website;
+    websiteModel
+        .updateWebsite(websiteId, website)
+        .then(function(website) {
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 }
 
 app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
 function deleteWebsite(req, res) {
-    var websiteId = req.params['websiteId'];
-    var oldWebsite = websites.find(function(website) {
-        return website['_id'] === websiteId;
-    });
+    websiteModel
+        .deleteWebsite(req.params['websiteId'])
+        .then(function(response) {
+            res.sendStatus(200);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
-    if (typeof oldWebsite === "undefined") {
-        res.sendStatus(404);
-    } else {
-        var index = websites.indexOf(oldWebsite);
-        websites.splice(index, 1);
-        res.sendStatus(200);
-    }
 }

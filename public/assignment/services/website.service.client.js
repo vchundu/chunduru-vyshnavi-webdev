@@ -46,7 +46,7 @@
         }
 
         function createWebsite(website, userId) {
-            website['developerId'] = userId;
+            website['_user'] = userId;
             var url = "/api/assignment/user/"+userId+"/website";
             return $http.post(url, website)
                 .then(function(response) {

@@ -83,6 +83,11 @@
                 templateUrl:'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrController',
                 controllerAs: 'model'
+            })
+            .when('/user/:userId/website/:websiteId/page/:pageId/widgetSearch', {
+                templateUrl:'views/widget/templates/widget-flickr-search.view.client.html',
+                controller: 'flickrController',
+                controllerAs: 'model'
             });
     }
 })();

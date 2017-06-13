@@ -33,8 +33,10 @@
         };
 
         function createWidget(widget, pageId) {
-            widget.pageId = pageId;
-            var url = "/api/assignment/page/:pageId/widget";
+            widget._page = pageId;
+            console.log('in client');
+            console.log(widget);
+            var url = "/api/assignment/page/"+pageId+"/widget";
             return $http.post(url, widget)
                 .then(function(response) {
                     return response.data;

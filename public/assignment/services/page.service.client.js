@@ -30,7 +30,7 @@
         }
 
         function createPage(page, websiteId) {
-            page.websiteId = websiteId;
+            page._website = websiteId;
             var url = "/api/assignment/website/"+websiteId+"/page/";
             return $http.post(url, page)
                 .then(function(response) {
