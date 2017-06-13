@@ -4,7 +4,17 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise; // there's more code than this, pull it from github
-mongoose.connect('mongodb://localhost/webdev_assignment');
+
+// checks connection
+var connectionString = 'mongodb://localhost/webdev_assignment'; // for local
+
+if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
+    var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
+    var password = process.env.MLAB_PASSWORD_WEBDEV;
+    connectionString = 'mongodb://' + username + ':' + password;
+    connectionString += '@ds137101.mlab.com:37101/heroku_ppjl6vwp'; // use yours
+}
+mongoose.connect(connectionString);
 
 app.use(bodyParser.json());
 
