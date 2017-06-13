@@ -48,9 +48,11 @@ function deletePage(pageId) {
 }
 
 function addWidget(pageId, widgetId) {
+    console.log('in page add widget');
     return pageModel
         .findById(pageId)
         .then(function(page) {
+            console.log('widget has been added to page');
             page._widget.push(widgetId);
             return page.save();
         })

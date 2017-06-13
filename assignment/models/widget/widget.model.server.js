@@ -13,9 +13,12 @@ widgetModel.deleteWidget = deleteWidget;
 widgetModel.moveWidget = moveWidget;
 
 function createWidget(widget) {
+    console.log('in create widget model');
+    console.log(widget);
     return widgetModel
         .create(widget)
         .then(function(widget) {
+            console.log('have created the widget model');
             return pageModel
                 .addWidget(widget._page, widget._id);
         })

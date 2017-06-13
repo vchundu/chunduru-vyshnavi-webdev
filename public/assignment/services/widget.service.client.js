@@ -34,7 +34,9 @@
 
         function createWidget(widget, pageId) {
             widget._page = pageId;
-            var url = "/api/assignment/page/:pageId/widget";
+            console.log('in client');
+            console.log(widget);
+            var url = "/api/assignment/page/"+pageId+"/widget";
             return $http.post(url, widget)
                 .then(function(response) {
                     return response.data;

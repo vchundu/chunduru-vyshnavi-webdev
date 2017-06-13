@@ -22,8 +22,8 @@
         }
 
         function createWidget(widget) {
-            console.log(widget);
             widget.widgetType = model.widgetType.toUpperCase();
+            console.log('in create widget client');
             widgetService
                 .createWidget(widget, model.pageId)
                 .then(function (status) {
