@@ -29,12 +29,10 @@ var widgets = [
 app.post('/api/assignment/page/:pageId/widget', createWidget);
 
 function createWidget(req, res) {
-    console.log('in create widget server');
     var widget = req.body;
     widgetModel
         .createWidget(widget)
         .then(function(widget) {
-            console.log('made the widget');
             res.json(widget);
         }, function(error) {
             res.sendStatus(404);
@@ -91,8 +89,6 @@ function moveWidget(req, res) {
     var initial = req.query['initial'];
     var final = req.query['final'];
 
-    console.log(initial);
-    console.log(final);
     widgetModel
         .moveWidget(pageId,initial, final)
         .then(function(response) {

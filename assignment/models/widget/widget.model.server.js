@@ -13,12 +13,9 @@ widgetModel.deleteWidget = deleteWidget;
 widgetModel.moveWidget = moveWidget;
 
 function createWidget(widget) {
-    console.log('in create widget model');
-    console.log(widget);
     return widgetModel
         .create(widget)
         .then(function(widget) {
-            console.log('have created the widget model');
             return pageModel
                 .addWidget(widget._page, widget._id);
         })
@@ -57,9 +54,7 @@ function moveWidget(pageId, initial, end) {
     return pageModel
         .findPageById(pageId)
         .then(function(page) {
-            console.log(page);
             page._widget.splice(end, 0, page._widget.splice(initial, 1)[0]);
-            console.log(page);
             page.markModified('_widget');
             return page.save();
         });
