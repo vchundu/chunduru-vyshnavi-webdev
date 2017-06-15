@@ -2,13 +2,13 @@
 
 var app = require('../../express'); // this will go to the express.js file (get this from the video)
 var userModel = require('../models/user/user.model.server');
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob@gmail.com" },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia", email: "charly@gmail.com"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi", email: "jannuzi@gmail.com" }
-];
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 // query parameters
 app.get('/api/assignment/credentials/user', findUserByCredentials);
@@ -127,4 +127,76 @@ function deleteUser(req, res) {
             res.sendStatus(404);
         });
 
+}
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if(user.username === username && user.password === password) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
+
+app.post('/api/assignment/login', passport.authenticate('local'), login);
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
+
+app.post('/api/assignment/logout', logout);
+
+app.post('/api/assignment/register', register);
+
+function register(req, res) {
+    var user = req.body;
+        userModel
+           .createUser(user)
+           .then(function (user) {
+                   req.login(user, function (status) {
+                            res.json(user);
+                        });
+                });
+}
+
+function logout(req, res) {
+    req.logout();
+    res.sendStatus(200);
+}
+
+function checkLoggedIn(req, res) {
+    if(req.isAuthenticated()) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
 }

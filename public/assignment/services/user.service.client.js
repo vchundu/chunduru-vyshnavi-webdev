@@ -12,7 +12,11 @@
             findUserByUsername: findUserByUsername,
             deleteUser: deleteUser,
             createUser:  createUser,
-            updateUser: updateUser
+            updateUser: updateUser,
+            login: login,
+            checkLoggedIn: checkLoggedIn,
+            logout: logout,
+            register: register
         };
 
 
@@ -71,6 +75,28 @@
                 .then(function(response) {
                     // do shit;
                 });
+        }
+
+        function login(username, password) {
+            var url="/api/assignment/login";
+            var credentials = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, credentials)
+        }
+
+        function checkLoggedIn() {
+            var url = "/api/assignment/checkLoggedIn";
+            return $http.get(url)
+                    .then(function (response) {
+                        return response.data;
+                    });
+        }
+
+        function logout() {
+            var url = "/api/assignment/logout";
+
         }
     }
 })();

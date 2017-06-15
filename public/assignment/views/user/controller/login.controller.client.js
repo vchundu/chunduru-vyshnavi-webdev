@@ -9,7 +9,8 @@
 
         model.checkLogin = function(username, password) {
             userService
-                .findUserByCredentials(username, password)
+                // .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(login,handleError); //success function, error function
 
             function login (user) {
