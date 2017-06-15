@@ -11,11 +11,12 @@ userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
 userModel.addWebsite = addWebsite;
 userModel.removeWebsite = removeWebsite;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = userModel;
 
 function createUser(user) {
-    user.password = bcrypt.hashSync(user.password);
+    // user.password = bcrypt.hashSync(user.password);
     return userModel.create(user);
 }
 
@@ -24,15 +25,17 @@ function findUserById(userId) {
 }
 
 function findUserByCredentials(username, password) {
-    return userModel
-        .findOne({username: username})
-        .then(function(user) {
-            if (user && bcrypt.compareSync(password, user.password)) {
-                return user;
-            } else {
-                return null;gi
-            }
-        });
+    return userModel.findOne({username: username, password: password});
+    // return userModel
+    //     .findOne({username: username})
+    //     .then(function(user) {
+    //         return user;
+    //         // if (user && bcrypt.compareSync(password, user.password)) {
+    //         //     return user;
+    //         // } else {
+    //         //     return null;gi
+    //         // }
+    //     });
 }
 
 function findUserByUsername(username) {
@@ -72,4 +75,10 @@ function removeWebsite(userId, websiteId) {
             user._websites.splice(index, 1);
             return user.save();
         });
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .find({"google.id" : googleId});
+
 }

@@ -41,12 +41,12 @@
        ng-click="model.updateUser(model.user)">Update</a>
 
     <a class="btn btn-block btn-danger"
-       ng-click="model.deleteUser(model.user)">Unregister</a>
+       ng-click="model.unregister()">Unregister</a>
 
     <a href="#!/user/{{model.userId}}/website"
        class="btn btn-block btn-primary">Websites</a>
 
-    <a  href="#!/login"
+    <a ng-click="model.logout()"
        class="btn btn-block btn-danger">Logout</a>
 </div>
 

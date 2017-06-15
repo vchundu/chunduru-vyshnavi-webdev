@@ -9,15 +9,15 @@
 
         model.checkLogin = function(username, password) {
             userService
-                // .findUserByCredentials(username, password)
                 .login(username, password)
                 .then(login,handleError); //success function, error function
 
             function login (user) {
-                $location.url("/user/"+user['_id']);
+                $location.url("/profile");
             }
 
             function handleError(error) {
+                console.log('hallo in error');
                 model.message = "Sorry, username " + username + " was not found";
             }
         }

@@ -16,7 +16,8 @@
             login: login,
             checkLoggedIn: checkLoggedIn,
             logout: logout,
-            register: register
+            register: register,
+            unregister: unregister
         };
 
 
@@ -77,6 +78,15 @@
                 });
         }
 
+        function unregister() {
+            var url ="/api/assignment/unregister";
+            return $http.delete(url)
+                .then(function(response) {
+                    return response.data;
+                }, function(error) {
+                });
+        }
+
         function login(username, password) {
             var url="/api/assignment/login";
             var credentials = {
@@ -84,6 +94,9 @@
                 password: password
             };
             return $http.post(url, credentials)
+                .then(function(response) {
+                    return response.data;
+                });
         }
 
         function checkLoggedIn() {
@@ -96,7 +109,19 @@
 
         function logout() {
             var url = "/api/assignment/logout";
+            return $http.post(url)
+                .then(function(response) {
+                    return response.data;
+                })
 
+        }
+
+        function register(user) {
+            var url = "/api/assignment/register";
+            return $http.post(url, user)
+                .then(function(response) {
+                    return response.data;
+                })
         }
     }
 })();

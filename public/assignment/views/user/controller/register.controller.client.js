@@ -32,12 +32,12 @@
                     lastName: lastName
                 };
                 userService
-                    .createUser(user)
+                    .register(user)
                     .then(createdUser);
             }
 
             function createdUser(user) {
-                $location.url('/user/'+user._id);
+                $location.url('/profile');
             }
 
 

@@ -3,10 +3,10 @@
         .module('WAM')
         .controller('websiteEditController', websiteEditController);
 
-    function websiteEditController($routeParams, websiteService, $location) {
+    function websiteEditController(currentUser, $routeParams, websiteService, $location) {
 
         var model = this;
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser['_id'];
         model.websiteId = $routeParams['websiteId'];
 
         websiteService

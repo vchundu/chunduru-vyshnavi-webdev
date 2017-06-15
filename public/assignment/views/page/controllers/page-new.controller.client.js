@@ -3,9 +3,9 @@
         .module('WAM')
         .controller('pageNewController', pageNewController);
 
-    function pageNewController(pageService, $routeParams, $location) {
+    function pageNewController(currentUser, pageService, $routeParams, $location) {
         var model = this;
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser['_id'];
         model.websiteId = $routeParams['websiteId'];
 
         function init() {

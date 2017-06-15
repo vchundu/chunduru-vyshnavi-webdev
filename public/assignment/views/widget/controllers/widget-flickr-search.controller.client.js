@@ -3,9 +3,9 @@
         .module('WAM')
         .controller('flickrController', flickrController);
 
-    function flickrController(flickrService, widgetService, $routeParams, $location) {
+    function flickrController(currentUser, flickrService, widgetService, $routeParams, $location) {
         var model = this;
-        var userId = $routeParams['userId'];
+        var userId = currentUser['_id'];
         var websiteId = $routeParams['websiteId'];
         var pageId = $routeParams['pageId'];
 

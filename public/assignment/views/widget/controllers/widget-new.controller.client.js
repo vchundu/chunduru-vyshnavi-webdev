@@ -3,10 +3,10 @@
         .module('WAM')
         .controller('widgetNewController', widgetNewController);
 
-    function widgetNewController($routeParams, widgetService, $location) {
+    function widgetNewController($routeParams, currentUser, widgetService, $location) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser['_id'];
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.widgetType = $routeParams['widgetType'];

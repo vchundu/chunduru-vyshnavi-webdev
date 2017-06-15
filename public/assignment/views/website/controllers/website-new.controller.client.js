@@ -3,10 +3,10 @@
         .module('WAM')
         .controller('websiteNewController', websiteNewController);
 
-    function websiteNewController(websiteService, $location, $routeParams) {
+    function websiteNewController(currentUser, websiteService, $location, $routeParams) {
 
         var model = this;
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser['_id'];
         websiteService
             .findAllWebsitesForUser(model.userId)
             .then(function(websites) {

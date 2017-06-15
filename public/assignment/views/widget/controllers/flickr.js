@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('flickrController', flickrController);
 
-    function flickrController(FlickrService) {
+    function flickrController(currentUser,FlickrService) {
         var model = this;
 
         model.searchPhotos = function(searchTerm) {

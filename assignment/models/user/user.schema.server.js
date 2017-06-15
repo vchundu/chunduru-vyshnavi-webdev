@@ -12,6 +12,10 @@ var userSchema = mongoose.Schema({
     _following: [
         {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}
     ],
+    google: {
+        id: String,
+        token: String
+    },
     dateCreated: {type: Date, default: Date.now}
 }, {collection: 'user'});
 

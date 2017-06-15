@@ -4,8 +4,9 @@
     <div class="container-fluid">
         <a href="widget-list.html"><span class="navbar-text pull-left glyphicon glyphicon-home"></span></a>
         <a class="navbar-brand" href="#">Home</a>
-        <a class="navbar-brand" href="#!/login">Login</a>
-        <a class="navbar-brand" href="#!/register">Register</a>
+        <a ng-if="!model.currentUser._id" class="navbar-brand" href="#!/login">Login</a>
+        <a ng-if="!model.currentUser._id" class="navbar-brand" href="#!/register">Register</a>
+        <a ng-if="model.currentUser._id" class="navbar-brand" href="#!/profile">Profile</a>
     </div>
 </nav>
 <div class="container">

@@ -25,18 +25,6 @@ function findUserByCredentials(req, res) {
         }, function(err) {
             res.sendStatus(404);
         });
-    // var user = users.find(function(user) {
-    //     return user.username === username &&
-    //         user.password === password;
-    // });
-    //
-    // if (typeof user === "undefined") {
-    //     res.sendStatus(404); //resource is not found error
-    //     return;
-    // } else {
-    //     res.json(user);
-    //     return;
-    // }
 }
 
 app.get('/api/assignment/username/user', findUserByUsername);
@@ -55,20 +43,6 @@ function findUserByUsername(req, res) {
         }, function(error) {
             res.sendStatus(404);
         });
-
-    //
-    // var user = users.find(function(user) {
-    //     return user.username === username &&
-    //         user.password === password;
-    // });
-    //
-    // if (typeof user === "undefined") {
-    //     res.sendStatus(404); //resource is not found error
-    //     return;
-    // } else {
-    //     res.json(user);
-    //     return;
-    // }
 }
 
 //path parameters
@@ -132,15 +106,18 @@ function deleteUser(req, res) {
 function localStrategy(username, password, done) {
     userModel
         .findUserByCredentials(username, password)
-        .then(
-            function(user) {
+        .then(function(user) {
+            console.log('in then');
                 if(user.username === username && user.password === password) {
+                    console.log('found the user');
                     return done(null, user);
                 } else {
+                    console.log('user is null');
                     return done(null, false);
                 }
             },
             function(err) {
+                console.log('in error');
                 if (err) { return done(err); }
             }
         );
@@ -149,8 +126,7 @@ function localStrategy(username, password, done) {
 app.post('/api/assignment/login', passport.authenticate('local'), login);
 
 function login(req, res) {
-    var user = req.user;
-    res.json(user);
+    res.json(req.user);
 }
 
 
@@ -171,9 +147,7 @@ function deserializeUser(user, done) {
         );
 }
 
-app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
 
-app.post('/api/assignment/logout', logout);
 
 app.post('/api/assignment/register', register);
 
@@ -188,10 +162,14 @@ function register(req, res) {
                 });
 }
 
+app.post('/api/assignment/logout', logout);
+
 function logout(req, res) {
     req.logout();
     res.sendStatus(200);
 }
+
+app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
 
 function checkLoggedIn(req, res) {
     if(req.isAuthenticated()) {
@@ -199,4 +177,77 @@ function checkLoggedIn(req, res) {
     } else {
         res.send('0');
     }
+}
+
+app.delete('/api/assignment/unregister', unregister);
+
+function unregister(req, res) {
+    userModel
+        .deleteUser(req.user._id)
+        .then(function(response) {
+            req.logout();
+            res.sendStatus(200);
+        })
+}
+
+var googleConfig;
+if(process.env.MLAB_USERNAME_WEBDEV) {
+    googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    };
+} else {
+    googleConfig = {
+        clientID: "271013544697-9n0uv070apalnsva7rf70r9f4sf2u5v6.apps.googleusercontent.com",
+        clientSecret: "WglZbatLyOYu5VlBJGOVS2i9",
+        callbackURL: "http://localhost:3000/auth/google/callback"
+    }
+}
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/assignment/index.html#!/profile',
+        failureRedirect: '/assignment/index.html#!/login'
+    }));
+
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        google: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
 }
