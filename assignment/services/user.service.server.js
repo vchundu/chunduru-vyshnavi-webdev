@@ -107,12 +107,11 @@ function localStrategy(username, password, done) {
     userModel
         .findUserByCredentials(username, password)
         .then(function(user) {
-            console.log('in then');
-                if(user.username === username && user.password === password) {
-                    console.log('found the user');
+            console.log(user);
+                if(user.username === username) {
+                    console.log('')
                     return done(null, user);
                 } else {
-                    console.log('user is null');
                     return done(null, false);
                 }
             },
