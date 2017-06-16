@@ -83,6 +83,6 @@ function removeWebsite(userId, websiteId) {
 
 function findUserByGoogleId(googleId) {
     return userModel
-        .find({"google.id" : googleId});
+        .findOne({"google.id" : googleId});
 
 }

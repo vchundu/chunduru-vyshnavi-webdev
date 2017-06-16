@@ -109,7 +109,6 @@ function localStrategy(username, password, done) {
         .then(function(user) {
             console.log(user);
                 if(user.username === username) {
-                    console.log('')
                     return done(null, user);
                 } else {
                     return done(null, false);
