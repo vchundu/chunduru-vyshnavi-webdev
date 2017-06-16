@@ -23,7 +23,7 @@
             pageService
                 .createPage(page, model.websiteId)
                 .then(function(page) {
-                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+                    $location.url("/user/website/"+model.websiteId+"/page");
                 });
         }
     }

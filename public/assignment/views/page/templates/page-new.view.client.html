@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top bg-info">
 
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
         <a ng-click="model.createPage(page)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">New Page</a>
     </div>
@@ -13,24 +13,32 @@
         <div ng-include="'views/page/templates/page-templates/page-list-temp.view.client.html'"></div>
     </div>
     <div class="col-sm-8 col-xs-12">
-        <label for="name">Name</label>
-        <input type="text"
-               id="name"
-               ng-model="page.name"
-               class="form-control"
-               placeholder="Page Name"/>
+        <form class="simple-form" novalidate>
+            <label for="name">Name</label>
+            <input type="text"
+                   id="name"
+                   ng-model="page.name"
+                   class="form-control"
+                   placeholder="Page Name"
+                   required />
 
-        <label for="title">Page Title</label>
-        <input type="text"
-               id="title"
-               class="form-control"
-               ng-model="page.title"
-               placeholder="Page Title"/>
+            <label for="title">Page Title</label>
+            <input type="text"
+                   id="title"
+                   class="form-control"
+                   ng-model="page.title"
+                   placeholder="Page Title"/>
+            <input type="submit"
+                   class="btn btn-block btn-primary"
+                   value="Create Page"
+                   ng-click="model.createPage(page)">
+        </form>
+
     </div>
 </div>
 
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
-            <a href="#!/user/{{model.userId}}"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
+            <a href="#!/profile"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
     </div>
 </nav>

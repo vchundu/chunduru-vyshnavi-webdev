@@ -26,7 +26,7 @@
             widgetService
                 .createWidget(widget, model.pageId)
                 .then(function (status) {
-                    $location.url('/user/'+model.userId
+                    $location.url('/user/'
                                   +'/website/'+model.websiteId
                                   +'/page/'+model.pageId
                                   +'/widget');

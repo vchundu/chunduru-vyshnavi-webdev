@@ -34,14 +34,14 @@
                 widgetService
                     .createWidget(widget)
                     .then(function(response) {
-                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                        $location.url("/user/website/"+websiteId+"/page/"+pageId+"/widget");
                     });
             } else {
                 widget._id = widgetId;
                 widgetService
                     .updateWidget(widgetId, widget)
                     .then(function(response) {
-                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                        $location.url("/user/website/"+websiteId+"/page/"+pageId+"/widget");
                     });
             }
         }

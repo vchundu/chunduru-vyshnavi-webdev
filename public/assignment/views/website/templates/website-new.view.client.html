@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
         <a ng-click="model.createWebsite(website)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">New Website</a>
     </div>
@@ -14,27 +14,34 @@
 
     <div class="col-sm-8 col-xs-12">
 
-        <label for="name">Name</label>
-        <input type="text"
-               id="name"
-               class="form-control"
-               ng-model="website.name"
-               placeholder="Name"/>
+        <form novalidate class="simple-form">
+            <label for="name">Name</label>
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   ng-model="website.name"
+                   placeholder="Name"
+                   required />
 
-        <label for="description">Description</label>
-        <textarea name="description"
-                  id="description"
-                  cols="30"
-                  rows="3"
-                  placeholder="Description"
-                  ng-model="website.description"
-                  class="form-control"></textarea>
+            <label for="description">Description</label>
+            <textarea name="description"
+                      id="description"
+                      cols="30"
+                      rows="3"
+                      placeholder="Description"
+                      ng-model="website.description"
+                      class="form-control"></textarea>
+            <input type="submit"
+                   class="btn btn-block btn-primary"
+                   ng-click="model.createWebsite(website)"
+                   value="Create Website">
+        </form>
 
     </div>
 </div>
 
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
+        <a href="#!/profile"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
     </div>
 </nav>

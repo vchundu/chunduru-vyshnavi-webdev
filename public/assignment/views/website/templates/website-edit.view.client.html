@@ -1,6 +1,6 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/website"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
         <a ng-click="model.updateWebsite()"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">Edit Website</a>
     </div>
@@ -13,18 +13,26 @@
 
     <div class="col-sm-8 col-xs-12">
 
-        <label for="name">Website Name</label>
-        <input type="text"
-               id="name"
-               class="form-control"
-               ng-model="model.website.name"/>
-        <label for="description">Website Description</label>
-        <textarea name="description"
-                  id="description"
-                  cols="30"
-                  rows="3"
-                  class="form-control"
-                  ng-model="model.website.description"></textarea>
+        <form class="simple-form" novalidate>
+            <label for="name">Website Name</label>
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   ng-model="model.website.name"/>
+            <label for="description">Website Description</label>
+            <textarea name="description"
+                      id="description"
+                      cols="30"
+                      rows="3"
+                      class="form-control"
+                      ng-model="model.website.description"></textarea>
+            <input type="submit"
+                   class="btn btn-block btn-primary"
+                   value="Confirm"
+                   ng-click="model.updateWebsite()">
+        </form>
+
+
         <a ng-click="model.deleteWebsite()"
            class="btn btn-block btn-danger">Delete</a>
     </div>
@@ -32,6 +40,6 @@
 
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
+        <a href="#!/profile"> <span class="navbar-text pull-right glyphicon glyphicon-user"></span> </a>
     </div>
 </nav>

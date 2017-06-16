@@ -35,7 +35,7 @@
             pageService
                 .updatePage(model.pageId, model.page)
                 .then(function(page) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/user/website/'+model.websiteId+'/page');
                 });
 
         }
@@ -44,7 +44,7 @@
             pageService
                 .deletePage(model.pageId)
                 .then(function(page) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/user/website/'+model.websiteId+'/page');
                 });
         }
     }

@@ -158,7 +158,7 @@ function uploadImage(req, res) {
         widgetModel
             .createWidget(widget)
             .then(function(widget) {
-                var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/";
+                var callbackUrl = "/assignment/#!/user/website/"+websiteId+"/page/"+pageId+"/widget/";
                 res.redirect(callbackUrl);
             }, function(error) {
                 res.sendStatus(404);
@@ -171,7 +171,7 @@ function uploadImage(req, res) {
                 widgetModel
                     .updateWidget(widgetId, widget)
                     .then(function(widget) {
-                        var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/";
+                        var callbackUrl = "/assignment/#!/user/website/"+websiteId+"/page/"+pageId+"/widget/";
                         res.redirect(callbackUrl);
                     }, function(error) {
                         res.sendStatus(404);

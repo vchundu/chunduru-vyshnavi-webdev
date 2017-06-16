@@ -1,6 +1,6 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/website/{{model.websiteId}}/page"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
         <a ng-click="model.updatePage()"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">Edit Page</a>
     </div>
@@ -10,17 +10,24 @@
         <div ng-include="'views/page/templates/page-templates/page-list-temp.view.client.html'"></div>
     </div>
     <div class="col-sm-8 col-xs-12">
-        <label for="name">Name</label>
-        <input type="text"
-               id="name"
-               class="form-control"
-               ng-model="model.page.name"/>
+        <form class="simple-form" novalidate>
+            <label for="name">Name</label>
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   ng-model="model.page.name"
+                   required/>
 
-        <label for="title">Page Title</label>
-        <input type="text"
-               id="title"
-               ng-model="model.page.title"
-               class="form-control"/>
+            <label for="title">Page Title</label>
+            <input type="text"
+                   id="title"
+                   ng-model="model.page.title"
+                   class="form-control"/>
+            <input type="submit"
+                   ng-click="model.updatePage()"
+                   value="Confirm Edits"
+                   class="btn btn-block btn-primary">
+        </form>
 
         <a ng-click="model.deletePage()"
            class="btn btn-block btn-danger">Delete</a>
@@ -28,7 +35,7 @@
 </div>
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}">
+        <a href="#!/profile">
             <span class="navbar-text pull-right glyphicon glyphicon-user"></span>
         </a>
     </div>
