@@ -6,18 +6,28 @@
     <div class="alert alert-danger" ng-show="model.message">
         {{ model.message }}
     </div>
-    <input type="text"
-           ng-model="username"
-           placeholder="username"
-           class="form-control"/>
 
-    <input type="password"
-           ng-model="password"
-           placeholder="password"
-           class="form-control">
+    <form novalidate class="simple-form">
+        <input type="text"
+               ng-model="username"
+               placeholder="username"
+               class="form-control"
+               required />
 
-    <a ng-click="model.checkLogin(username, password)"
-       class="btn btn-block btn-primary">Login</a>
+        <input type="password"
+               ng-model="password"
+               placeholder="password"
+               class="form-control"
+               required />
+
+        <input type="submit"
+               ng-click="model.checkLogin(username, password)"
+               value="Login"
+               class="btn btn-block btn-primary">
+    </form>
+
+    <!--<a ng-click="model.checkLogin(username, password)"-->
+       <!--class="btn btn-block btn-primary">Login</a>-->
 
     <a href="#!/register"
        class="btn btn-block btn-success">Register</a>

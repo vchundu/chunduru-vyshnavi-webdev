@@ -24,16 +24,20 @@
             }
 
             function userNotFound(error) {
-                var user = {
-                    username: username,
-                    password: password,
-                    email: email,
-                    firstName: firstName,
-                    lastName: lastName
-                };
-                userService
-                    .register(user)
-                    .then(createdUser);
+                if(typeof password === "undefined") {
+                    model.message = "please enter a password";
+                } else {
+                    var user = {
+                        username: username,
+                        password: password,
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName
+                    };
+                    userService
+                        .register(user)
+                        .then(createdUser);
+                }
             }
 
             function createdUser(user) {

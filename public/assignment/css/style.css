@@ -66,5 +66,10 @@ body {
     height: 100%;
 }
 
+.ng-submitted .ng-invalid {
+    background-color: #FF6347;
+}
+
+
 
 
