@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
 
-        <a href="#!/user/{{model.userId}}"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
+        <a href="#!/profile"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
 
         <a class="navbar-brand" href="#">Profile</a>
 
@@ -43,7 +43,7 @@
     <a class="btn btn-block btn-danger"
        ng-click="model.unregister()">Unregister</a>
 
-    <a href="#!/user/{{model.userId}}/website"
+    <a href="#!/user/website"
        class="btn btn-block btn-primary">Websites</a>
 
     <a ng-click="model.logout()"
@@ -53,7 +53,7 @@
 <nav class="navbar bg-info navbar-fixed-bottom">
     <div class="container-fluid">
 
-        <a href="#!/user/{{model.userId}}"><span class="navbar-text pull-right glyphicon glyphicon-user"></span></a>
+        <a href="#!/profile"><span class="navbar-text pull-right glyphicon glyphicon-user"></span></a>
 
     </div>
 </nav>

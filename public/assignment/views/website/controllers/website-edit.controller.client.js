@@ -26,7 +26,7 @@
             websiteService
                 .deleteWebsite(model.websiteId)
                 .then(function(website) {
-                    $location.url('/user/'+model.userId+'/website');
+                    $location.url('/user/website');
                 });
         };
 
@@ -34,7 +34,7 @@
             websiteService
                 .updateWebsite(model.websiteId, model.website)
                 .then(function(website) {
-                    $location.url('/user/'+model.userId+'/website');
+                    $location.url('/user/website');
                 });
         };
 

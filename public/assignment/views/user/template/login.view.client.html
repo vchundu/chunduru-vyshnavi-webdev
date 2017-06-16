@@ -7,9 +7,11 @@
         {{ model.message }}
     </div>
 
-    <form novalidate class="simple-form">
+    <form name="loginForm" novalidate class="simple-form">
         <input type="text"
+               ng-class="{'has-error': loginForm.username.$error.required}"
                ng-model="username"
+               name="username"
                placeholder="username"
                class="form-control"
                required />

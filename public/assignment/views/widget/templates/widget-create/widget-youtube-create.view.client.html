@@ -1,23 +1,12 @@
 <nav class="navbar navbar-fixed-top bg-info">
     <div class="container-fluid">
-        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#!/user/website/{{model.websiteId}}/page/{{model.pageId}}/widget"><span class="navbar-text pull-left glyphicon glyphicon-chevron-left"></span></a>
         <a ng-click="model.createWidget(widget)"><span class="navbar-text pull-right glyphicon glyphicon-ok"></span></a>
         <a class="navbar-brand" href="#">New Widget</a>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <label for="name">Name</label>
-    <input type="text"
-           id="name"
-           ng-model="widget.name"
-           class="form-control"/>
-
-    <label for="text">Text</label>
-    <input type="text"
-           id="text"
-           ng-model="widget.text"
-           class="form-control"/>
 
     <label for="url">URL</label>
     <input type="text"

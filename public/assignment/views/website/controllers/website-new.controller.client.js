@@ -23,7 +23,7 @@
             websiteService
                 .createWebsite(website, model.userId)
                 .then(function(data) {
-                    $location.url('/user/'+model.userId+'/website/');
+                    $location.url('/user/website/');
                 });
         }
     }
