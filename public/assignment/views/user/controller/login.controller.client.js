@@ -17,7 +17,6 @@
             }
 
             function handleError(error) {
-                console.log('hallo in error');
                 model.message = "Sorry, username " + username + " was not found";
             }
         }

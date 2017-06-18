@@ -16,9 +16,7 @@ userModel.findUserByGoogleId = findUserByGoogleId;
 module.exports = userModel;
 
 function createUser(user) {
-    console.log(user.password);
     user.password = bcrypt.hashSync(user.password);
-    console.log(user.password);
     return userModel.create(user);
 }
 
@@ -31,12 +29,9 @@ function findUserByCredentials(username, password) {
     return userModel
         .findOne({username: username})
         .then(function(user) {
-            console.log(user);
             if (user && bcrypt.compareSync(password, user.password)) {
-                console.log('same password');
                 return user;
             } else {
-                console.log('not same password');
                 return null;
             }
         });
