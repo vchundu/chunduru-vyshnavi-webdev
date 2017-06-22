@@ -195,13 +195,7 @@ if(process.env.MLAB_USERNAME_WEBDEV) {
         clientSecret : process.env.GOOGLE_CLIENT_SECRET,
         callbackURL  : process.env.GOOGLE_CLIENT_REDIRECT
     };
-} else {
-    googleConfig = {
-        clientID: "271013544697-9n0uv070apalnsva7rf70r9f4sf2u5v6.apps.googleusercontent.com",
-        clientSecret: "WglZbatLyOYu5VlBJGOVS2i9",
-        callbackURL: "http://localhost:3000/auth/google/callback"
-    }
-}
+} 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 
