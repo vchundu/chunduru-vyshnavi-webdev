@@ -2,3 +2,8 @@ body {
     background-color: #FFE4E1;
     margin-top: 50px;
 }
+
+.vc-black{
+    background-color: black;
+    color: white;
+}
