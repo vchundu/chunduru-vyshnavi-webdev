@@ -3,7 +3,7 @@ var app = require('../express');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.Promise = require('q').Promise; // there's more code than this, pull it from github
+mongoose.Promise = require('q').Promise;
 
 // checks connection
 var connectionString = 'mongodb://localhost/webdev_assignment'; // for local
